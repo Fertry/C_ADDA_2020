@@ -12,7 +12,6 @@ int main() {
 
 	printf("Hola mundo!\n");
 
-
 	double numerosReales[] = { 45., 56, 90., 1., 23., 78., 76. };
 	list listaReales = list_of(numerosReales, 7, double_type);
 	long numerosEnteros[] = { 6, 7, 9, 12, 1, 7, 15, 5 };
@@ -24,12 +23,12 @@ int main() {
 	long sumaEnteros = 0;
 	double primerMayor = 0;
 	double umbral = 60.0;
-	list listaCoordenadasX = list_empty(double_type);
 
 	sumaReales = sumaListaReales(listaReales);
 	sumaEnteros = sumaListaEnteros(listaEnteros);
 	primerMayor = buscaPrimerMayorReal(listaReales, umbral);
-	listaCoordenadasX = devuelveCoordenadaXDePuntos(listaPuntos);
+	list listaCoordenadasX = devuelveCoordenadaXDePuntos(listaPuntos);
+	bool verificaPredicado = cumplenPredicado(listaEnteros, es_par);
 
 	printf("Suma = %0.2lf\n", sumaReales);
 	printf("Suma = %ld\n", sumaEnteros);
@@ -107,5 +106,25 @@ list devuelveCoordenadaXDePuntos(list lista) {
 	return resultado;
 
 }
+
+// Dada una lista de enteros, comprobar si todos cumplen un predicado:
+// Predicados: es_par y es_impar ya definidos
+bool cumplenPredicado(list lista, bool (*predicado)(int e)) {
+
+	bool resultado = true;
+
+	int i = 0;
+	while (i<lista.size && resultado) {
+
+		resultado = predicado(*(int*) list_get(&lista,i));
+		i++;
+
+	}
+
+	return resultado;
+
+}
+
+// Dada una lista de puntos, buscar el de mayor coordenada X:
 
 

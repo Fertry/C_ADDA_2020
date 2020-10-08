@@ -18,5 +18,9 @@
 float sumaListaReales(list lista);
 int sumaListaEnteros(list lista);
 double buscaPrimerMayorReal(list lista, double umbral);
+list devuelveCoordenadaXDePuntos(list lista);
+bool cumplenPredicado(list lista, bool (*predicado)(int e));
+bool es_par(int a);
+bool es_impar(int a);
 
 #endif /* MAIN_H_ */
