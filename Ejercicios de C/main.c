@@ -8,24 +8,32 @@
 
 
 // Función de ejecución:
-int main(){
+int main() {
 
 	printf("Hola mundo!\n");
 
 
 	double numerosReales[] = { 45., 56, 90., 1., 23., 78., 76. };
-	list listaNumeros = list_of(numerosReales, 7, double_type);
+	list listaReales = list_of(numerosReales, 7, double_type);
 	long numerosEnteros[] = { 6, 7, 9, 12, 1, 7, 15, 5 };
 	list listaEnteros = list_of(numerosEnteros, 8, int_type);
+	punto puntos[] = { {2.4, 6.7}, {3.0, 5.1}, {5.0, 1.2} };
+	list listaPuntos = list_of(puntos, 3, punto_type);
 
 	double sumaReales = 0.0;
 	long sumaEnteros = 0;
+	double primerMayor = 0;
+	double umbral = 60.0;
+	list listaCoordenadasX = list_empty(double_type);
 
-	sumaReales = sumaListaReales(listaNumeros);
+	sumaReales = sumaListaReales(listaReales);
 	sumaEnteros = sumaListaEnteros(listaEnteros);
+	primerMayor = buscaPrimerMayorReal(listaReales, umbral);
+	listaCoordenadasX = devuelveCoordenadaXDePuntos(listaPuntos);
 
-	printf("Suma = %lf\n", sumaReales);
+	printf("Suma = %0.2lf\n", sumaReales);
 	printf("Suma = %ld\n", sumaEnteros);
+	printf("El primer real mayor a %0.2lf es el %0.2lf\n", umbral, primerMayor);
 
 }
 
@@ -33,7 +41,7 @@ int main(){
 float sumaListaReales(list lista) {
 
 	float suma = 0.0;
-	for(int i=0;i<lista.size;i++) {
+	for (int i=0;i<lista.size;i++) {
 
 			suma = suma + *(double*) list_get(&lista,i);
 
@@ -47,7 +55,7 @@ float sumaListaReales(list lista) {
 int sumaListaEnteros(list lista) {
 
 	int suma = 0;
-	for(int i=0;i<lista.size;i++) {
+	for (int i=0;i<lista.size;i++) {
 
 		int numero = *(int*) list_get(&lista,i);
 		int cuadrado = numero * numero;
@@ -60,7 +68,44 @@ int sumaListaEnteros(list lista) {
 
 }
 
+// Dada una lista de nº reales, buscar el primero que sea mayor a un umbral dado:
+double buscaPrimerMayorReal(list lista, double umbral) {
 
+	double resultado;
+	int primero = 0;
+	int i = 0;
+	while (i < lista.size && primero == 0) {
 
+		double numero = *(double*) list_get(&lista,i);
+
+		if (numero > umbral) {
+
+			resultado = numero;
+			primero += 1;
+
+		}
+
+		i++;
+
+	}
+
+	return resultado;
+
+}
+
+// Dada una lista de objetos de tipo Punto, devolver otra con la coordenada X de esos puntos:
+list devuelveCoordenadaXDePuntos(list lista) {
+
+	list resultado = list_empty(double_type);
+	for (int i=0;i<lista.size;i++) {
+
+		double coordenadaX = (*(punto*) list_get(&lista,i)).x;
+		list_add(&resultado, &coordenadaX);
+
+	}
+
+	return resultado;
+
+}
 
 
