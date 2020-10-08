@@ -16,8 +16,8 @@ int main() {
 	list listaReales = list_of(numerosReales, 7, double_type);
 	long numerosEnteros[] = { 6, 7, 9, 12, 1, 7, 15, 5 };
 	list listaEnteros = list_of(numerosEnteros, 8, int_type);
-	punto puntos[] = { {2.4, 6.7}, {3.0, 5.1}, {5.0, 1.2} };
-	list listaPuntos = list_of(puntos, 3, punto_type);
+	//punto puntos[] = { {2.4, 6.7}, {3.0, 5.1}, {5.0, 1.2} };
+	//list listaPuntos = list_of(puntos, 3, punto_type);
 
 	double sumaReales = 0.0;
 	long sumaEnteros = 0;
@@ -27,8 +27,8 @@ int main() {
 	sumaReales = sumaListaReales(listaReales);
 	sumaEnteros = sumaListaEnteros(listaEnteros);
 	primerMayor = buscaPrimerMayorReal(listaReales, umbral);
-	list listaCoordenadasX = devuelveCoordenadaXDePuntos(listaPuntos);
-	bool verificaPredicado = cumplenPredicado(listaEnteros, es_par);
+	//list listaCoordenadasX = devuelveCoordenadaXDePuntos(listaPuntos);
+	//bool verificaPredicado = cumplenPredicado(listaEnteros, es_par);
 
 	printf("Suma = %0.2lf\n", sumaReales);
 	printf("Suma = %ld\n", sumaEnteros);
