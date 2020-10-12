@@ -2,30 +2,64 @@
  * main.c
  *
  *  	Análisis y Diseño de Datos y Algoritmos - 2020
- *  	Práctica 1 - Ejercicios Iterativos
  *      Author: Alejandro Fernández Trigo
+ *      Práctica Individual 1
+ *
  */
 
 #include "main.h"
 
-// Main:
+// Función principal:
 int main() {
 
 	char mem[1000];
 
-	list listaNumerosEjercicio1 = leeDatosEjercicio1("Tests/PI1Ej1DatosEntrada.txt");
+	// ################################################################
+	// Tests de funciones sin lectura de datos para debug:
+	// ################################################################
+	long numerosEnteros[] = { 6, 7, 9, 12, 1, 7, 15, 5 };
+	list listaEnteros = list_of(numerosEnteros, 8, int_type);
+	list resultadoEjercicio1 = compruebaSiEsPrimo(listaEnteros);
+	// ################################################################
+
+	// Variables:
+	//list listaNumerosEjercicio1 = leeDatosEjercicio1("Tests/PI1Ej1DatosEntrada.txt");
 	//list resultadoEjercicio1 = compruebaSiEsPrimo(listaNumerosEjercicio1);
 
 	printf("###################################################################################\n");
 	printf("############################# Test de Ejercicio 1 ################################\n");
 	printf("Datos de entrada --> Lista de enteros: \n");
-	printf("%s\n", list_tostring(&listaNumerosEjercicio1, mem));
+	printf("%s\n", list_tostring(&listaEnteros, mem));
 	printf("Resultado del ejercicio 1 --> Lista de primos: \n");
+	printf("%s\n", list_tostring(&resultadoEjercicio1, mem));
+	printf("###################################################################################\n");
+	printf("###################################################################################\n");
+
+	printf("###################################################################################\n");
+	printf("############################# Test de Ejercicio 2 ################################\n");
+	//printf("Dato de entrada --> Limite: \n");
+	//printf("%s\n", list_tostring(&listaEnteros, mem));
+	//printf("Resultado del ejercicio 2 --> Siguientes primos hasta el : \n", limite);
+	//printf("%s\n", list_tostring(&resultadoEjercicio1, mem));
+	printf("###################################################################################\n");
+	printf("###################################################################################\n");
+
+	printf("###################################################################################\n");
+	printf("############################# Test de Ejercicio 3 ################################\n");
+	//printf("Datos de entrada --> Lista de puntos: \n");
+	//printf("%s\n", list_tostring(&listaEnteros, mem));
+	//printf("Resultado del ejercicio 3 --> ????: \n");
 	//printf("%s\n", list_tostring(&resultadoEjercicio1, mem));
 	printf("###################################################################################\n");
 	printf("###################################################################################\n");
 
 }
+
+//###################################################################################
+//###################################################################################
+//#######################		EJERCICIO 1                         #################
+//###################################################################################
+//###################################################################################
 
 // Función que lee un fichero de entrada; dado un fichero con múltiples líneas
 // y en cada línea números enteros separados por comas, devuelve una lista
@@ -85,3 +119,50 @@ bool esPrimo(long n) {
 	}
 	return !a;
 }
+
+
+//###################################################################################
+//###################################################################################
+//#######################		EJERCICIO 2                         #################
+//###################################################################################
+//###################################################################################
+
+// Función que lee un fichero de entrada; dado un fichero con múltiples líneas
+// y en cada línea un concepto "Limite: número", toma ese número para pasarlo como
+// parámetro a la función del ejercicio 2:
+int leeDatosEjercicio2 (char * fichero) {
+
+	return NULL;
+
+}
+
+
+// Dado un número entero, devuelve una cadena (con saltos de linea) formada por
+// todos los nº primos desde el 1 hasta el límite (número introducido como parámetro):
+//string primosHastaLimite (int limite) {
+
+	//return NULL;
+
+//}
+
+// Función auxiliar que calcula cual es el próximo primo dado un nº entero:
+int siguientePrimo (int numero) {
+
+	return NULL;
+
+}
+
+//###################################################################################
+//###################################################################################
+//#######################		EJERCICIO 3                         #################
+//###################################################################################
+//###################################################################################
+
+// Función que lee una lista de puntos y....
+
+
+// Dado un punto...
+
+
+// Función auxiliar....
+

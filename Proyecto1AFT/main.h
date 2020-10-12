@@ -3,6 +3,8 @@
  *
  *  	Análisis y Diseño de Datos y Algoritmos - 2020
  *      Author: Alejandro Fernández Trigo
+ *      Práctica Individual 1
+ *
  */
 
 
@@ -19,5 +21,9 @@
 list leeDatosEjercicio1 (char * fichero);
 list compruebaSiEsPrimo (list lista);
 bool esPrimo(long n);
+
+int leeDatosEjercicio2 (char * fichero);
+string primosHastaLimite (int limite);
+int siguientePrimo (int numero);
 
 #endif /* MAIN_H_ */
