@@ -1,9 +1,9 @@
 /*
  * main.h
  *
- *  	Análisis y Diseño de Datos y Algoritmos - 2020
- *      Author: Alejandro Fernández Trigo
- *      Práctica Individual 1
+ *  	Analisis y Diseño de Datos y Algoritmos - 2020
+ *      Author: Alejandro Fernandez Trigo
+ *      Practica Individual 1
  *
  */
 
