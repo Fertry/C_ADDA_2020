@@ -1,15 +1,15 @@
 /*
  * main.c
  *
- *  	Analisis y Diseño de Datos y Algoritmos - 2020
- *      Author: Alejandro Fernandez Trigo
- *      Practica Individual 1
+ *  	Análisis y Diseño de Datos y Algoritmos - 2020
+ *      Author: Alejandro Fernández Trigo
+ *      Práctica Individual 1
  *
  */
 
 #include "main.h"
 
-// Funcion principal:
+// Función principal:
 int main() {
 
 	char mem[1000];
@@ -61,9 +61,9 @@ int main() {
 //###################################################################################
 //###################################################################################
 
-// Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
-// y en cada linea numeros enteros separados por comas, devuelve una lista
-// formada por todos los numeros del fichero:
+// Función que lee un fichero de entrada; dado un fichero con múltiples líneas
+// y en cada línea números enteros separados por comas, devuelve una lista
+// formada por todos los números del fichero:
 list leeDatosEjercicio1 (char * fichero) {
 
 	list lista = list_empty(int_type);
@@ -94,7 +94,7 @@ list compruebaSiEsPrimo (list lista) {
 	for (int i = 1; i< lista.size; i++) {
 
 		int numero = *(int*) list_get(&lista,i);
-		if (esPrimo(numero)) {
+		if (Math2.es_primo(numero)) {
 
 			list_add(&resultado, &numero);
 
@@ -106,30 +106,15 @@ list compruebaSiEsPrimo (list lista) {
 
 }
 
-// Funcion auxiliar que comprueba si un numero dado es
-// primo o no y devuelve el resultado en forma de una
-// variable logica:
-bool esPrimo(long n) {
-	long sq = (long) sqrt((double) n);
-	int e = 2;
-	bool a = false;
-	while (e <= sq && !a) {
-		a = (n%e==0);
-		e = e + 1;
-	}
-	return !a;
-}
-
-
 //###################################################################################
 //###################################################################################
 //#######################		EJERCICIO 2                         #################
 //###################################################################################
 //###################################################################################
 
-// Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
-// y en cada linea un concepto "Limite: numero", toma ese numero para pasarlo como
-// parametro a la funcion del ejercicio 2:
+// Función que lee un fichero de entrada; dado un fichero con múltiples líneas
+// y en cada línea un concepto "Limite: número", toma ese número para pasarlo como
+// parámetro a la función del ejercicio 2:
 int leeDatosEjercicio2 (char * fichero) {
 
 	return NULL;
@@ -137,15 +122,15 @@ int leeDatosEjercicio2 (char * fichero) {
 }
 
 
-// Dado un numero entero, devuelve una cadena (con saltos de linea) formada por
-// todos los nº primos desde el 1 hasta el limite (numero introducido como parametro):
+// Dado un número entero, devuelve una cadena (con saltos de linea) formada por
+// todos los nº primos desde el 1 hasta el límite (número introducido como parámetro):
 //string primosHastaLimite (int limite) {
 
 	//return NULL;
 
 //}
 
-// Funcion auxiliar que calcula cual es el proximo primo dado un nº entero:
+// Función auxiliar que calcula cual es el próximo primo dado un nº entero:
 int siguientePrimo (int numero) {
 
 	return NULL;
@@ -158,11 +143,11 @@ int siguientePrimo (int numero) {
 //###################################################################################
 //###################################################################################
 
-// Funcion que lee una lista de puntos y....
+// Función que lee una lista de puntos y....
 
 
 // Dado un punto...
 
 
-// Funcion auxiliar....
+// Función auxiliar....
 
