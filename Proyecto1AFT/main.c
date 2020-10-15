@@ -124,17 +124,19 @@ int leeDatosEjercicio2 (char * fichero) {
 
 // Dado un número entero, devuelve una cadena (con saltos de linea) formada por
 // todos los nº primos desde el 1 hasta el límite (número introducido como parámetro):
-//string primosHastaLimite (int limite) {
-
-	//return NULL;
-
-//}
-
-// Función auxiliar que calcula cual es el próximo primo dado un nº entero:
-int siguientePrimo (int numero) {
-
-	return NULL;
-
+string realizarEjercicioDos(int e) {
+    string res = "";
+    int i = 1;
+    while (i < 100) {
+        if (siguiente_primo(i) < e + 1) {
+            int cuadrado = pow(siguiente_primo(i), 2);
+            string cuadradoString = "";
+            cuadradoString = itoa(cuadrado, cuadradoString, 100);
+            res = res + cuadrado + "";
+        }
+        i = siguiente_primo(i);
+    }
+    return res;
 }
 
 //###################################################################################
