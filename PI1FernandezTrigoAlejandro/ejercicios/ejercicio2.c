@@ -20,15 +20,16 @@
 // parametro a la funcion del ejercicio 2:
 list leeDatosEjercicioDos(char * fichero) {
 
+	char espacio[] = "";
+	char limite[] = "Limite: ";
 	iterator filas = file_iterable_pchar(fichero);
     list resultado = list_empty(int_type);
-    char limite[] = "Limite: ";
-    char numero[] = "";
 
     while (iterable_has_next(&filas)) {
 
         char fila = (char) iterable_next(&filas);
-        int numeroEntero = int_parse_s(replaceWord(fila, limite, numero));
+        char numero = replaceWord(fila, limite, espacio);
+        int numeroEntero = int_parse_s(numero);
         list_add(&resultado, &numeroEntero);
 
     }

@@ -21,7 +21,7 @@ int main() {
 	// Variables:
 	list listaEnteros = leeDatosEjercicio1("ficheros/PI1Ej1DatosEntrada.txt");
 	list resultadoEjercicio1 = compruebaSiEsPrimo(listaEnteros);
-	list listaLimites = leeDatosEjercicio2("ficheros/PI1Ej2DatosEntrada.txt");
+	//list listaLimites = leeDatosEjercicio2("ficheros/PI1Ej2DatosEntrada.txt");
 	//list listaPuntos = leeDatosEjercicio3("ficheros/PI1Ej3DatosEntrada.txt");
 	//mapa? resultadoEjercicio3 = sumaPorCuadrantes(listaPuntos);
 
@@ -43,9 +43,9 @@ int main() {
 	printf("###################################################################################\n");
 	printf("############################# Test de Ejercicio 2 ################################\n");
 	printf("Dato de entrada --> Limite: \n");
-	printf("%s\n", list_tostring(&listaLimites, mem));
+	//printf("%s\n", list_tostring(&listaLimites, mem));
 	printf("Resultado del ejercicio 2 --> Cuadrado de los siguientes primos : \n");
-	funcionAuxiliarEjercicio2(listaLimites);
+	//funcionAuxiliarEjercicio2(listaLimites);
 	printf("###################################################################################\n");
 	printf("###################################################################################\n");
 
