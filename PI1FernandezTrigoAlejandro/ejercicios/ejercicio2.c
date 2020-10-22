@@ -27,10 +27,10 @@ list leeDatosEjercicioDos(char * fichero) {
 
     while (iterable_has_next(&filas)) {
 
-        char fila = (char) iterable_next(&filas);
-        char numero = replaceWord(fila, limite, espacio);
-        int numeroEntero = int_parse_s(numero);
-        list_add(&resultado, &numeroEntero);
+        char *fila = (char*) iterable_next(&filas);
+        char numeroChar = replaceWord(fila, limite, espacio);
+        int numeroInt = int_parse_s(numeroChar);
+        list_add(&resultado, &numeroInt);
 
     }
 
@@ -43,15 +43,18 @@ list leeDatosEjercicioDos(char * fichero) {
 string primosHastaLimite(int limite) {
 
 	int i = 1;
-    string resultado = "";
-    int cuadrado = 0;
+	int cuadrado = 0;
+	char cuadradoString [255];
+    string resultado = string_empty();
+    //string cuadradoString = string_empty();
 
     while (i <= limite) {
 
         if (siguiente_primo(i) <= limite) {
 
-            int cuadrado = pow(siguiente_primo(i), 2);
-            resultado = resultado + cuadrado + "\n";
+            cuadrado = pow(siguiente_primo(i), 2);
+            cuadradoString = int_tostring(&cuadrado, cuadradoString);
+            // resultado = resultado + cuadradoString + "\n";
 
         }
 
@@ -69,13 +72,16 @@ string primosHastaLimite(int limite) {
 void funcionAuxiliarEjercicio2 (list lista) {
 
 	int i = 0;
-	string resultado = "";
+	char mem[256];
+	int limite = 0;
+	string resultado = string_empty();
 
 	while (i < list_size(&lista)) {
 
-		resultado = primosHastaLimite(list_get(&lista, i));
+		limite = list_get(&lista, i);
+		resultado = primosHastaLimite(limite);
 		printf("Limite %d\n", list_get(&lista, i));
-		printf("%s", resultado);
+		printf("%s", string_tostring(&resultado, mem));
 		i++;
 
 	}

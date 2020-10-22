@@ -9,9 +9,9 @@
 
 // Includes:
 #include "main.h"
-#include "ejercicio1.h"
-#include "ejercicio2.h"
-#include "ejercicio3.h"
+#include "ejercicios/ejercicio1.h"
+#include "ejercicios/ejercicio2.h"
+#include "ejercicios/ejercicio3.h"
 
 // Funcion principal:
 int main() {

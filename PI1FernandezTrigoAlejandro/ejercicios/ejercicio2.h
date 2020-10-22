@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "types/math2.h"
 #include "types/types.h"
 #include "types/list.h"

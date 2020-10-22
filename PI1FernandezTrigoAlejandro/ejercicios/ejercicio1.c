@@ -27,12 +27,12 @@ list leeDatosEjercicioUno(char * fichero) {
     while (iterable_has_next(&lista)) {
 
         miniLista = list_empty(int_type);
-        char fila = (char) iterable_next(&lista);
+        char *fila = (char*) iterable_next(&lista);
         iterator miniFila = split_iterable_pchar(fila, ", ");
 
         while (iterable_has_next(&miniFila)) {
 
-            char numero = (char) iterable_next(&miniFila);
+            char *numero = (char*) iterable_next(&miniFila);
             int numeroEntero = int_parse_s(numero);
             list_add(&miniLista, &numeroEntero);
 
