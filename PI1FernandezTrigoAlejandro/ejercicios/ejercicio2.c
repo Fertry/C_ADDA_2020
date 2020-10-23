@@ -18,23 +18,23 @@
 // Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
 // y en cada linea un concepto "Limite: numero", toma ese numero para pasarlo como
 // parametro a la funcion del ejercicio 2:
-list leeDatosEjercicioDos(char * fichero) {
+list leeDatosEjercicioDos(char *fichero) {
 
-	char espacio[] = "";
-	char limite[] = "Limite: ";
+	char *tt[255];
+	char limite[] = ": ";
+	list resultado = list_empty(int_type);
 	iterator filas = file_iterable_pchar(fichero);
-    list resultado = list_empty(int_type);
 
-    while (iterable_has_next(&filas)) {
+	while (iterable_has_next(&filas)) {
 
-        char *fila = (char*) iterable_next(&filas);
-        char numeroChar = replaceWord(fila, limite, espacio);
-        int numeroInt = int_parse_s(numeroChar);
-        list_add(&resultado, &numeroInt);
+		char *fila = (char*) iterable_next(&filas);
+		split_text(fila, limite, tt);
+		int numero = int_parse_s(tt[1]);
+		list_add(&resultado, &numero);
 
-    }
+	}
 
-    return resultado;
+	return resultado;
 
 }
 
@@ -43,45 +43,50 @@ list leeDatosEjercicioDos(char * fichero) {
 string primosHastaLimite(int limite) {
 
 	int i = 1;
-	int cuadrado = 0;
-	char cuadradoString [255];
-    string resultado = string_empty();
-    //string cuadradoString = string_empty();
+	char mem [255];
+	string resultado = string_empty();
+	string saltoLinea = string_of_pchar("\n");
 
-    while (i <= limite) {
+	while (i <= limite) {
 
-        if (siguiente_primo(i) <= limite) {
+		char * cadena;
+		string numero = string_empty();
 
-            cuadrado = pow(siguiente_primo(i), 2);
-            cuadradoString = int_tostring(&cuadrado, cuadradoString);
-            // resultado = resultado + cuadradoString + "\n";
+		if (siguiente_primo(i) <= limite) {
 
-        }
+			int cuadrado = pow(siguiente_primo(i), 2);
+			cadena = int_tostring(&cuadrado, mem);
+			numero = string_of_pchar(cadena);
+			string_add_string(&resultado, &numero);
+			string_add_string(&resultado, &saltoLinea);
 
-        i = siguiente_primo(i);
+		}
 
-    }
+		i = siguiente_primo(i);
 
-    return resultado;
+	}
+
+	return resultado;
 
 }
 
 // Función auxiliar para mostrar el resultado del ejercicio 2. Dado que se
 // recibe un entero (no una lista), iteramos para llamar a la función tantas
 // veces como límites nos den en el fichero de entrada:
-void funcionAuxiliarEjercicio2 (list lista) {
+void funcionAuxiliarEjercicio2(list lista) {
 
 	int i = 0;
-	char mem[256];
+	char mem[255];
 	int limite = 0;
 	string resultado = string_empty();
 
 	while (i < list_size(&lista)) {
 
-		limite = list_get(&lista, i);
+		limite = *(int*) list_get(&lista, i);
 		resultado = primosHastaLimite(limite);
-		printf("Limite %d\n", list_get(&lista, i));
+		printf("Limite %d\n", limite);
 		printf("%s", string_tostring(&resultado, mem));
+		printf("\n");
 		i++;
 
 	}

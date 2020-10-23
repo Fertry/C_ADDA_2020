@@ -17,9 +17,10 @@
 #include "types/math2.h"
 #include "types/types.h"
 #include "types/list.h"
+#include "types/hash_table.h"
 
 // Cabeceras de las funciones:
-void leeDatosEjercicio3(char *fichero);
-void sumaPorCuadrantes(list lista);
+list leeDatosEjercicio3 (char * fichero);
+hash_table sumaPorCuadrantes (list lista);
 
 #endif /* EJERCICIOS_EJERCICIO3_H_ */
