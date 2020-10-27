@@ -23,7 +23,7 @@ int main() {
 	list resultadoEjercicio1 = compruebaSiEsPrimo(listaEnteros);
 	list Listalimites = leeDatosEjercicio2("ficheros/PI1Ej2DatosEntrada.txt");
 	list listaPuntos = leeDatosEjercicio3("ficheros/PI1Ej3DatosEntrada.txt");
-	//resultadoEjercicio3 = sumaPorCuadrantes(listaPuntos);
+	hash_table resultadoEjercicio3 = sumaPorCuadrantes(listaPuntos);
 
 	// Debug:
 	//long numerosEnteros[] = { 6, 7, 9, 12, 1, 7, 15, 5 };
@@ -56,7 +56,7 @@ int main() {
 	printf("Datos de entrada --> Lista de puntos: \n");
 	printf("%s\n", list_tostring(&listaPuntos, mem));
 	printf("Resultado del ejercicio 3 --> Cuadrantes con sus sumas: \n");
-	//printf("%s\n", list_tostring(&resultadoEjercicio3, mem));
+	printf("%s\n", hash_table_tostring(&resultadoEjercicio3, mem));
 	printf("###################################################################################\n");
 	printf("###################################################################################\n");
 

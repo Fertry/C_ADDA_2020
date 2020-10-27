@@ -43,20 +43,20 @@ hash_table sumaPorCuadrantes (list lista) {
 
 	while (i < list_size(&lista)) {
 
-		double valorPunto = 0.;
-		punto *p = (punto*) list_get(&lista, i);
-		Cuadrante c = punto_cuadrante(p);
+		double sumatorio = 0.;
+		punto * Punto = (punto*) list_get(&lista, i);
+		Cuadrante cuadrante = punto_cuadrante(Punto);
 
-		if (hash_table_contains(&resultado, &c) != 0) {
+		if (hash_table_contains(&resultado, &cuadrante) != 0) {
 
-			valorPunto = *(double*) hash_table_get(&resultado, &c);
+			sumatorio = *(double*) hash_table_get(&resultado, &cuadrante);
 
 		}
 
-		double valorActual = p->x;
-		double suma = valorPunto + valorActual;
-		hash_table_put(&resultado, &c, &suma);
-		printf("%f", valorPunto);
+		double valorCoordenadaX = Punto -> x;
+		double suma = sumatorio + valorCoordenadaX;
+		hash_table_put(&resultado, &cuadrante, &suma);
+		printf("%f", sumatorio);
 		i++;
 
 	}
