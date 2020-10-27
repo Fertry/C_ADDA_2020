@@ -7,8 +7,8 @@
  *
  */
 
-#ifndef TESTS_H_
-#define TESTS_H_
+#ifndef MAIN_H_
+#define MAIN_H_
 
 // Librerias:
 #include <stdio.h>
@@ -18,6 +18,4 @@
 #include "types/types.h"
 #include "types/list.h"
 
-// Cabeceras de las funciones:
-
-#endif /* TESTS_H_ */
+#endif /* MAIN_H_ */
