@@ -19,32 +19,18 @@
 // una lista de Punto2D formada por los puntos del fichero:
 list leeDatosEjercicio3 (char * fichero) {
 
-	char *tt[255];
-	char *kk[255];
-	char limite[] = ", ";
-	char parentesisDerecho[] = ")";
-	char parentesisIzquierdo[] = "(";
 	list resultado = list_empty(punto_type);
 	iterator filas = file_iterable_pchar(fichero);
 
 	while (iterable_has_next(&filas)) {
 
 		char *fila = (char*) iterable_next(&filas);
-		split_text(fila, limite, tt);
-
-		split_text(tt[0], parentesisIzquierdo, kk);
-		split_text(tt[1], parentesisDerecho, kk);
-
-		double coordenadaX = double_parse_s(kk[0]);
-		double coordenadaY = double_parse_s(kk[1]);
-
-		punto P = {coordenadaX, coordenadaY};
+		punto P = punto_parse_s(fila);
 		list_add(&resultado, &P);
 
 	}
 
 	return resultado;
-	//iterator miniFila = split_iterable_pchar(fila, ", ");
 
 }
 

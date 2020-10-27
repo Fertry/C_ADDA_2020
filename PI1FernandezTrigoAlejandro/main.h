@@ -17,5 +17,6 @@
 #include "types/math2.h"
 #include "types/types.h"
 #include "types/list.h"
+#include "types/hash_table.h"
 
 #endif /* MAIN_H_ */

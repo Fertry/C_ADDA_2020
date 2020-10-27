@@ -18,7 +18,7 @@
 // Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
 // y en cada linea numeros enteros separados por comas, devuelve una lista de listas
 // formadas por los numeros del fichero:
-list leeDatosEjercicioUno(char * fichero) {
+list leeDatosEjercicio1 (char * fichero) {
 
     iterator lista = file_iterable_pchar(fichero);
     list miniLista = list_empty(int_type);
@@ -54,11 +54,14 @@ list compruebaSiEsPrimo (list lista) {
 	list resultado = list_empty(int_type);
 
 	while (i < list_size(&lista)) {
+		list listaNumeros = *(list*) list_get(&lista, i);
+
 		while (j < list_size(list_get(&lista, i))) {
 
-			if (es_primo(list_get(list_get(&lista, i), j))) {
+			int numero = *(int*) list_get(&listaNumeros, j);
+			if (es_primo(numero)) {
 
-				list_add(&resultado, list_get(list_get(&lista, i), j));
+				list_add(&resultado, &numero);
 
 			}
 

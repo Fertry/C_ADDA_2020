@@ -20,8 +20,8 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-int leeDatosEjercicio2(char * fichero);
-string primosHastaLimite(int limite);
-void funcionAuxiliarEjercicio2(list lista);
+list leeDatosEjercicio2 (char * fichero);
+string primosHastaLimite (int limite);
+void funcionAuxiliarEjercicio2 (list lista);
 
 #endif /* EJERCICIOS_EJERCICIO2_H_ */

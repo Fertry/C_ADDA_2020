@@ -19,7 +19,7 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-list leeDatosEjercicio1(char * fichero);
-list compruebaSiEsPrimo(list lista);
+list leeDatosEjercicio1 (char * fichero);
+list compruebaSiEsPrimo (list lista);
 
 #endif /* EJERCICIOS_EJERCICIO1_H_ */

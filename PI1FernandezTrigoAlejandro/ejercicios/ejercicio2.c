@@ -18,7 +18,7 @@
 // Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
 // y en cada linea un concepto "Limite: numero", toma ese numero para pasarlo como
 // parametro a la funcion del ejercicio 2:
-list leeDatosEjercicioDos(char *fichero) {
+list leeDatosEjercicio2 (char * fichero) {
 
 	char *tt[255];
 	char limite[] = ": ";
@@ -40,7 +40,7 @@ list leeDatosEjercicioDos(char *fichero) {
 
 // Dado un numero entero, devuelve una cadena (con saltos de linea) formada por
 // todos los nº primos (al cuadrado) desde el 2 hasta el limite (numero introducido como parametro):
-string primosHastaLimite(int limite) {
+string primosHastaLimite (int limite) {
 
 	int i = 1;
 	char mem [255];
@@ -73,7 +73,7 @@ string primosHastaLimite(int limite) {
 // Función auxiliar para mostrar el resultado del ejercicio 2. Dado que se
 // recibe un entero (no una lista), iteramos para llamar a la función tantas
 // veces como límites nos den en el fichero de entrada:
-void funcionAuxiliarEjercicio2(list lista) {
+void funcionAuxiliarEjercicio2 (list lista) {
 
 	int i = 0;
 	char mem[255];
