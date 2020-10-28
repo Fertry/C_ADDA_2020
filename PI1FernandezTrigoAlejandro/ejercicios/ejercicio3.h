@@ -22,5 +22,6 @@
 // Cabeceras de las funciones:
 list leeDatosEjercicio3 (char * fichero);
 hash_table sumaPorCuadrantes (list lista);
+void funcionAuxiliarEjercicio3 (hash_table tabla);
 
 #endif /* EJERCICIOS_EJERCICIO3_H_ */
