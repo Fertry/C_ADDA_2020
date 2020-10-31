@@ -56,7 +56,6 @@ hash_table sumaPorCuadrantes (list lista) {
 		double valorActual = p->x;
 		double suma = valorPunto + valorActual;
 		hash_table_put(&resultado, &c, &suma);
-		printf("%f", valorPunto);
 		i++;
 
 	}
