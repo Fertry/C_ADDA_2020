@@ -1,5 +1,5 @@
 /*
- * ejercicio1iterativa.h
+ * ejercicio1.h
  *
  *  	Análisis y Diseño de Datos y Algoritmos - 2020
  *      Author: Alejandro Fernández Trigo
@@ -7,8 +7,8 @@
  *
  */
 
-#ifndef EJERCICIOS_EJERCICIO1ITERATIVA_H_
-#define EJERCICIOS_EJERCICIO1ITERATIVA_H_
+#ifndef EJERCICIOS_EJERCICIO1_H_
+#define EJERCICIOS_EJERCICIO1_H_
 
 // Librerias:
 #include <stdio.h>
@@ -18,6 +18,7 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-int hastaDondeSonIgualesIterativo (list lista);
+list leeDatosEjercicio1 (char * fichero);
+void funcionAuxiliarEjercicio1 (list lista);
 
-#endif /* EJERCICIOS_EJERCICIO1ITERATIVA_H_ */
+#endif /* EJERCICIOS_EJERCICIO1_H_ */
