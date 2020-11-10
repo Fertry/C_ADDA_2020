@@ -20,6 +20,28 @@
 // Si exponente=0 --> 0, si exponente>0 --> en funcion del modulo:
 long elevaAIterativo (long numero1, int numero2) {
 
-	return 1L;
+	long resultado = (long) 1;
+	long base = (long) numero1;
+	int exponente = numero2;
+
+	while (exponente > 0) {
+
+		if (exponente % 2 == 1) {
+
+			//Si modulo == 1 ----> (a^(n/2))^2 * a
+			resultado = (long) (base * (pow((pow(base, (exponente / 2))), 2)));
+			return resultado;
+
+		} else {
+
+			//Si modulo == 0 ----> (a^(n/2))^2
+			resultado = (long) (pow((pow(base, (exponente / 2))), 2));
+			return resultado;
+
+		}
+
+	}
+
+	return resultado;
 
 }

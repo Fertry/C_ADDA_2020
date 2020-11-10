@@ -19,5 +19,6 @@
 
 // Cabeceras de las funciones:
 bool esMultiploRecursivoFinal (int numero1, int numero2);
+bool esMultiploRecursivoFinalInterno (bool verdadero, int numero1, int numero2);
 
 #endif /* EJERCICIOS_EJERCICIO2RECURSIVAFINAL_H_ */

@@ -20,10 +20,32 @@
 // dejan de ser iguales y devuelve esa posición numérica:
 int hastaDondeSonIgualesRecursivoFinal (list lista) {
 
-	return 0;
+	return hastaDondeSonIgualesRecursivoFinalInterno (0, lista);
 
 }
 
-// Funcion interna (privada) para ser llamada por la de arriba (publica) con
+// Funcion interna para ser llamada por la de arriba (publica) con
 // parametros ya establecidos:
-// TO-DO
+int hastaDondeSonIgualesRecursivoFinalInterno (int i, list lista) {
+
+	char *frase1 = (char*) list_get(&lista, 0);
+	char *frase2 = (char*) list_get(&lista, 1);
+
+	while (i < sizeof(frase1)) {
+
+		if (*(frase1 + i) == *(frase2 + i)) {
+
+			i++;
+			return hastaDondeSonIgualesRecursivoFinalInterno (i, lista);
+
+		} else {
+
+			return i;
+
+		}
+
+	}
+
+	return i;
+
+}

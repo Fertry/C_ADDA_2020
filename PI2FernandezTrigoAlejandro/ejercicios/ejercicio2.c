@@ -53,34 +53,28 @@ list leeDatosEjercicio2 (char * fichero) {
 void funcionAuxiliarEjercicio2 (list lista) {
 
 	int i = 0;
-	int j = 0;
-	char mem[500];
 	int numero1;
 	int numero2;
+	char mem[500];
 	bool resultadoIterativo;
 	bool resultadoRecursivoFinal;
 
 	while (i < list_size(&lista)) {
-			list parDeNumeros = *(list*) list_get(&lista, i);
 
-			while (j < list_size(list_get(&lista, i))) {
+		list parDeNumeros = *(list*) list_get(&lista, i);
+		numero1 = *(int*) list_get(&parDeNumeros, 0);
+		numero2 = *(int*) list_get(&parDeNumeros, 1);
 
-				numero1 = *(int*) list_get(&parDeNumeros, 0);
-				numero2 = *(int*) list_get(&parDeNumeros, 1);
-				resultadoIterativo = esMultiploIterativo(numero1, numero2);
-				resultadoRecursivoFinal = esMultiploRecursivoFinal(numero1, numero2);
-				printf("%s\n", int_tostring(&numero1, mem));
-				printf("%s\n", int_tostring(&numero2, mem));
-				printf("1. Iterativo: %d\n", resultadoIterativo);
-				printf("2. Recursivo final: %d\n", resultadoRecursivoFinal);
-				printf("\n");
-				j++;
+		resultadoIterativo = esMultiploIterativo(numero1, numero2);
+		resultadoRecursivoFinal = esMultiploRecursivoFinal(numero1, numero2);
 
-			}
+		printf("%s\n", int_tostring(&numero1, mem));
+		printf("%s\n", int_tostring(&numero2, mem));
+		printf("1. Iterativo: %d\n", resultadoIterativo);
+		printf("2. Recursivo final: %d\n", resultadoRecursivoFinal);
+		printf("\n");
+		i++;
 
-			j = 0;
-			i++;
-
-		}
+	}
 
 }

@@ -21,19 +21,20 @@
 int hastaDondeSonIgualesIterativo (list lista) {
 
 	int i = 0;
-	string frase1 = *(string*) list_get(&lista, 0);
-	string frase2 = *(string*) list_get(&lista, 1);
 	bool verdadero = true;
+	char *frase1 = (char*) list_get(&lista, 0);
+	char *frase2 = (char*) list_get(&lista, 1);
 
-	while (i < frase1.size && verdadero) {
+	while (i < sizeof(frase1) && verdadero) {
 
-		if (frase1.data[i] == frase2.data[i]) {
+		if (*(frase1 + i) == *(frase2 + i)) {
 
 			i++;
 
 		} else {
 
 			verdadero = false;
+
 		}
 
 	}

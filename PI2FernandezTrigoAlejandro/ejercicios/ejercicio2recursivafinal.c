@@ -19,10 +19,29 @@
 // Si a==0 --> true, si 0<a<b --> false y si a>=b --> a=a-b:
 bool esMultiploRecursivoFinal (int numero1, int numero2) {
 
-	return true;
+	return esMultiploRecursivoFinalInterno (false, numero1, numero2);
 
 }
 
-// Funcion interna (privada) para ser llamada por la de arriba (publica) con
+// Funcion interna para ser llamada por la de arriba (publica) con
 // parametros ya establecidos:
-// TO-DO
+bool esMultiploRecursivoFinalInterno (bool verdadero, int numero1, int numero2) {
+
+	bool resultado;
+
+	if (numero1 == 0) {
+
+		return true;
+
+	} else if (numero1 > 0) {
+
+		return esMultiploRecursivoFinalInterno (verdadero, numero1 - numero2, numero2);
+
+	} else {
+
+		resultado = verdadero;
+		return resultado;
+
+	}
+
+}

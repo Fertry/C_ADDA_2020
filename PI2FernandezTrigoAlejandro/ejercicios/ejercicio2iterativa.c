@@ -19,7 +19,23 @@
 // Si a==0 --> true, si 0<a<b --> false y si a>=b --> a=a-b:
 bool esMultiploIterativo (int numero1, int numero2) {
 
+	bool resultado = false;
 
-	return true;
+	while (numero1 > 0) {
+
+			numero1 = numero1 - numero2;
+			if (numero1 == 0) {
+
+				return true;
+
+			} else if (numero1 < 0) {
+
+				return false;
+
+			}
+
+		}
+
+	return resultado;
 
 }

@@ -19,5 +19,6 @@
 
 // Cabeceras de las funciones:
 int hastaDondeSonIgualesRecursivoFinal (list lista);
+int hastaDondeSonIgualesRecursivoFinalInterno (int i, list lista);
 
 #endif /* EJERCICIOS_EJERCICIO1RECURSIVAFINAL_H_ */
