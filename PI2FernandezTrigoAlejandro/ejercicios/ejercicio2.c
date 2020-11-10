@@ -8,6 +8,8 @@
  */
 
 #include "ejercicio2.h"
+#include "ejercicio2iterativa.h"
+#include "ejercicio2recursivafinal.h"
 
 //###################################################################################
 //###################################################################################
@@ -48,18 +50,37 @@ list leeDatosEjercicio2 (char * fichero) {
 // Funcion auxiliar para, dado una lista de listas de integers devuelta por
 // la función de lectura, invocar a la función esMultiplo() tantas veces
 // como pares de integers recibamos por fichero:
-/*
 void funcionAuxiliarEjercicio2 (list lista) {
 
 	int i = 0;
+	int j = 0;
+	char mem[500];
+	int numero1;
+	int numero2;
+	bool resultadoIterativo;
+	bool resultadoRecursivoFinal;
 
 	while (i < list_size(&lista)) {
+			list parDeNumeros = *(list*) list_get(&lista, i);
 
-		list miniLista = list_get(&lista, i);
-		int numero1 = *(int*) list_get(&miniLista, 0);
-		int numero2 = *(int*) list_get(&miniLista, 1);
+			while (j < list_size(list_get(&lista, i))) {
 
-	}
+				numero1 = *(int*) list_get(&parDeNumeros, 0);
+				numero2 = *(int*) list_get(&parDeNumeros, 1);
+				resultadoIterativo = esMultiploIterativo(numero1, numero2);
+				resultadoRecursivoFinal = esMultiploRecursivoFinal(numero1, numero2);
+				printf("%s\n", int_tostring(&numero1, mem));
+				printf("%s\n", int_tostring(&numero2, mem));
+				printf("1. Iterativo: %d\n", resultadoIterativo);
+				printf("2. Recursivo final: %d\n", resultadoRecursivoFinal);
+				printf("\n");
+				j++;
+
+			}
+
+			j = 0;
+			i++;
+
+		}
 
 }
-*/

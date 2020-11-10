@@ -1,9 +1,9 @@
 /*
  * ejercicio1iterativa.c
  *
- *  	Análisis y Diseño de Datos y Algoritmos - 2020
- *      Author: Alejandro Fernández Trigo
- *      Práctica Individual 2
+ *  	Analisis y Diseño de Datos y Algoritmos - 2020
+ *      Author: Alejandro Fernandez Trigo
+ *      Practica Individual 2
  *
  */
 
@@ -21,12 +21,9 @@
 int hastaDondeSonIgualesIterativo (list lista) {
 
 	int i = 0;
-	string frase1 = string_of_pchar("Hola mundo");
-	string frase2 = string_of_pchar("Hola mondo");
+	string frase1 = *(string*) list_get(&lista, 0);
+	string frase2 = *(string*) list_get(&lista, 1);
 	bool verdadero = true;
-
-	//frase1 = list_get(&lista, 0);
-	//frase2 = list_get(&lista, 1);
 
 	while (i < frase1.size && verdadero) {
 
@@ -44,30 +41,3 @@ int hastaDondeSonIgualesIterativo (list lista) {
 	return i;
 
 }
-
-/*
- * 	int i = 0;
-	char mem[500];
-	string frase1;
-	string frase2;
-	int posicionIterativo;
-	//int posicionRecursivoFinal;
-	list miniLista = list_empty(string_type);
-
-	while (i < list_size(&lista)) {
-
-		list frases = list_empty(string_type);
-		miniLista = list_get(&lista, i);
-		frase1 = list_get(&miniLista, 0);
-		frase2 = list_get(&miniLista, 1);
-		list_add(&frases, &frase1);
-		list_add(&frases, &frase2);
-		posicionIterativo = hastaDondeSonIgualesIterativo(frases);
-		//posicionRecursivoFinal = hastaDondeSonIgualesRecursivoFinal(frases);
-		printf("%s\n", string_tostring(frase1, mem));
-		printf("%s\n", string_tostring(frase2, mem));
-		prinf("1. Iterativo: %d\n", posicionIterativo);
-		//prinf("2. Recursivo final: %d\n", posicionRecursivoFinal);
-		prinf("\n");
-		i++;
- */

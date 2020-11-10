@@ -1,14 +1,15 @@
 /*
  * ejercicio1.c
  *
- *  	Análisis y Diseño de Datos y Algoritmos - 2020
- *      Author: Alejandro Fernández Trigo
- *      Práctica Individual 2
+ *  	Analisis y Diseño de Datos y Algoritmos - 2020
+ *      Author: Alejandro Fernandez Trigo
+ *      Practica Individual 2
  *
  */
 
 #include "ejercicio1.h"
 #include "ejercicio1iterativa.h"
+#include "ejercicio1recursivafinal.h"
 
 //###################################################################################
 //###################################################################################
@@ -51,28 +52,35 @@ list leeDatosEjercicio1 (char * fichero) {
 void funcionAuxiliarEjercicio1 (list lista) {
 
 	int i = 0;
+	int j = 0;
 	char mem[500];
 	string frase1;
 	string frase2;
 	int posicionIterativo;
-	//int posicionRecursivoFinal;
-	list miniLista = list_empty(string_type);
+	int posicionRecursivoFinal;
 
 	while (i < list_size(&lista)) {
+		list parDeFrases = *(list*) list_get(&lista, i);
 
-		list frases = list_empty(string_type);
-		miniLista = list_get(&lista, i);
-		frase1 = list_get(&miniLista, 0);
-		frase2 = list_get(&miniLista, 1);
-		list_add(&frases, &frase1);
-		list_add(&frases, &frase2);
-		posicionIterativo = hastaDondeSonIgualesIterativo(frases);
-		//posicionRecursivoFinal = hastaDondeSonIgualesRecursivoFinal(frases);
-		printf("%s\n", string_tostring(&frase1, mem));
-		printf("%s\n", string_tostring(&frase2, mem));
-		printf("1. Iterativo: %d\n", posicionIterativo);
-		//prinf("2. Recursivo final: %d\n", posicionRecursivoFinal);
-		printf("\n");
+		while (j < list_size(list_get(&lista, i))) {
+
+			list frases = list_empty(string_type);
+			frase1 = *(string*) list_get(&parDeFrases, 0);
+			frase2 = *(string*) list_get(&parDeFrases, 1);
+			list_add(&frases, &frase1);
+			list_add(&frases, &frase2);
+			posicionIterativo = hastaDondeSonIgualesIterativo(frases);
+			posicionRecursivoFinal = hastaDondeSonIgualesRecursivoFinal(frases);
+			printf("%s\n", string_tostring(&frase1, mem));
+			printf("%s\n", string_tostring(&frase2, mem));
+			printf("1. Iterativo: %d\n", posicionIterativo);
+			printf("2. Recursivo final: %d\n", posicionRecursivoFinal);
+			printf("\n");
+			j++;
+
+		}
+
+		j = 0;
 		i++;
 
 	}
