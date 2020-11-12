@@ -15,17 +15,66 @@
 // ###################################################################################
 // ###################################################################################
 
-// Dada una lista de listas de strings, donde cada lista contiene dos frases,
-// itera sobre ambas frases de cada lista. Determina en que punto de ambas frases
-// dejan de ser iguales y devuelve esa posición numérica:
+// Dados dos strings, donde cada uno representa una frase,
+// itera sobre ambos. Determina en que punto de ambas frases
+// dejan de ser iguales y devuelve esa posición numérica, para ello se emplea el
+// algoritmo de búsqueda binaria:
+int hastaDondeSonIgualesRecursivoFinal (string frase1, string frase2) {
+
+	int i = 0;
+	int j = frase1.size;
+
+	return hastaDondeSonIgualesRecursivoFinalInterno (i, j, frase1, frase2);
+
+}
+
+// Funcion interna para ser llamada por la de arriba (publica) con
+// parametros ya establecidos:
+int hastaDondeSonIgualesRecursivoFinalInterno (int i, int j, string frase1, string frase2) {
+
+	int k = 0;
+	int resultado = -1;
+
+	while (j - i > 0 && resultado == -1) {
+
+		// Posición: la mitad
+		k = ((i + j) / 2);
+		if (frase1.data[k] == frase2.data[k]) {
+
+			//i = k + 1;
+			return hastaDondeSonIgualesRecursivoFinalInterno((k + 1), j, frase1, frase2);
+
+		} else {
+
+			// Hacia la izquierda
+			if (frase1.data[k - 1] == frase2.data[k - 1]) {
+
+				resultado = k;
+
+			} else {
+
+				//j = k;
+				return hastaDondeSonIgualesRecursivoFinalInterno(i, k, frase1, frase2);
+
+			}
+
+		}
+
+	}
+
+	return resultado;
+
+}
+
+
+// Versión "simple" usando while no óptima:
+/*
 int hastaDondeSonIgualesRecursivoFinal (list lista) {
 
 	return hastaDondeSonIgualesRecursivoFinalInterno (0, lista);
 
 }
 
-// Funcion interna para ser llamada por la de arriba (publica) con
-// parametros ya establecidos:
 int hastaDondeSonIgualesRecursivoFinalInterno (int i, list lista) {
 
 	char *frase1 = (char*) list_get(&lista, 0);
@@ -49,3 +98,4 @@ int hastaDondeSonIgualesRecursivoFinalInterno (int i, list lista) {
 	return i;
 
 }
+*/

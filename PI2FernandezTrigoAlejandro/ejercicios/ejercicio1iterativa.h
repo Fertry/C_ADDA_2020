@@ -18,6 +18,6 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-int hastaDondeSonIgualesIterativo (list lista);
+int hastaDondeSonIgualesIterativo (string frase1, string frase2);
 
 #endif /* EJERCICIOS_EJERCICIO1ITERATIVA_H_ */

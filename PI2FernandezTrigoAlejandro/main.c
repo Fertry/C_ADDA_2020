@@ -16,7 +16,7 @@
 // Funcion principal:
 int main() {
 
-	//char mem[500];
+	char mem[500];
 
 	// Variables:
 	list listaFrases = leeDatosEjercicio1("ficheros/PI2Ej1DatosEntrada.txt");
@@ -26,7 +26,7 @@ int main() {
 	// Salida por consola:
 	printf("###################################################################################\n");
 	printf("############################# Test de Ejercicio 1 ################################\n");
-	//printf("%s\n", list_tostring(&listaFrases, mem));
+	printf("%s\n", list_tostring(&listaFrases, mem));
 	funcionAuxiliarEjercicio1(listaFrases);
 	printf("###################################################################################\n");
 	printf("###################################################################################\n");

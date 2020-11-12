@@ -18,7 +18,7 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-int hastaDondeSonIgualesRecursivoFinal (list lista);
-int hastaDondeSonIgualesRecursivoFinalInterno (int i, list lista);
+int hastaDondeSonIgualesRecursivoFinal (string frase1, string frase2);
+int hastaDondeSonIgualesRecursivoFinalInterno (int i, int j, string frase1, string frase2);
 
 #endif /* EJERCICIOS_EJERCICIO1RECURSIVAFINAL_H_ */
