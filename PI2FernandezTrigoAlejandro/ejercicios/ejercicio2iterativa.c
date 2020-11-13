@@ -16,7 +16,7 @@
 // ###################################################################################
 
 // Dado dos numeros a,b se calcula si a es múltiplo de b en base a las siguientes condiciones
-// Si a==0 --> true, si 0<a<b --> false y si a>=b --> a=a-b:
+// Si a==0 --> true, si 0<a<b --> false y si a>=b --> a=a-b lo que supone una complejidad lineal:
 bool esMultiploIterativo (int numero1, int numero2) {
 
 	bool resultado = false;

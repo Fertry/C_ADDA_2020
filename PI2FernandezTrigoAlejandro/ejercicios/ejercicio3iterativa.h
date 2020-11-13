@@ -18,6 +18,6 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-long elevaAIterativo (long numero1, int numero2);
+long elevaAIterativo (long exponente, int n);
 
 #endif /* EJERCICIOS_EJERCICIO3ITERATIVA_H_ */

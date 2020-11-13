@@ -15,33 +15,26 @@
 // ###################################################################################
 // ###################################################################################
 
-// Dados dos numeros 1 y 2, que son respectivamente, la base (Long) y el exponente (Integer)
-// se calcula a^n en base a las siguientes condiciones
-// Si exponente=0 --> 0, si exponente>0 --> en funcion del modulo:
-long elevaAIterativo (long numero1, int numero2) {
+// Dados dos numeros 1 y 2, se calcula a^expo en base a las siguientes condiciones
+// Si n=0 --> 1, si n>0 --> en funcion del modulo, usamos divide y venceras para obtener
+// una complejidad logaritmica:
+long elevaAIterativo (long exponente, int n) {
 
-	long resultado = (long) 1;
-	long base = (long) numero1;
-	int exponente = numero2;
+	long base = 1L;
 
-	while (exponente > 0) {
+	while (n > 0) {
 
-		if (exponente % 2 == 1) {
+		if (n % 2 == 1) {
 
-			//Si modulo == 1 ----> (a^(n/2))^2 * a
-			resultado = (long) (base * (pow((pow(base, (exponente / 2))), 2)));
-			return resultado;
-
-		} else {
-
-			//Si modulo == 0 ----> (a^(n/2))^2
-			resultado = (long) (pow((pow(base, (exponente / 2))), 2));
-			return resultado;
+			base = base * exponente;
 
 		}
 
+		exponente *= exponente;
+		n = n / 2;
+
 	}
 
-	return resultado;
+	return base;
 
 }

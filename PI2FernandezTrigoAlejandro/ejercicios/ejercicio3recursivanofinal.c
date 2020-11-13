@@ -15,15 +15,33 @@
 // ###################################################################################
 // ###################################################################################
 
-// Dados dos numeros 1 y 2, que son respectivamente, la base (Long) y el exponente (Integer)
-// se calcula a^n en base a las siguientes condiciones
-// Si exponente=0 --> 0, si exponente>0 --> en funcion del modulo:
-long elevaARecursivoNoFinal (long numero1, int numero2) {
+// Dados dos numeros 1 y 2, se calcula a^expo en base a las siguientes condiciones
+// Si n=0 --> 1, si n>0 --> en funcion del modulo, usamos divide y venceras para obtener
+// una complejidad logaritmica:
+long elevaARecursivoNoFinal (long exponente, int n) {
 
-	return 1L;
+	long resultado;
+
+	if (n > 0) {
+
+		resultado = elevaARecursivoNoFinal(exponente, (n / 2));
+
+		if (n % 2 == 1) {
+
+			resultado = ((resultado * resultado) * exponente);
+
+		} else {
+
+			resultado *= resultado;
+
+		}
+
+	} else {
+
+		resultado = 1L;
+
+	}
+
+	return resultado;
 
 }
-
-// Funcion interna (privada) para ser llamada por la de arriba (publica) con
-// parametros ya establecidos:
-// TO-DO

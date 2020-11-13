@@ -17,8 +17,8 @@
 
 // Dados dos strings, donde cada uno representa una frase,
 // itera sobre ambos. Determina en que punto de ambas frases
-// dejan de ser iguales y devuelve esa posición numérica, para ello se emplea el
-// algoritmo de búsqueda binaria:
+// dejan de ser iguales y devuelve esa posicion numerica, para ello se emplea el
+// algoritmo de búsqueda binaria para obtener una complejidad de orden logaritmico:
 int hastaDondeSonIgualesRecursivoFinal (string frase1, string frase2) {
 
 	int i = 0;
@@ -28,14 +28,14 @@ int hastaDondeSonIgualesRecursivoFinal (string frase1, string frase2) {
 
 }
 
-// Funcion interna para ser llamada por la de arriba (publica) con
+// Funcion interna para ser llamada por la de arriba con
 // parametros ya establecidos:
 int hastaDondeSonIgualesRecursivoFinalInterno (int i, int j, string frase1, string frase2) {
 
 	int k = 0;
 	int resultado = -1;
 
-	while (j - i > 0 && resultado == -1) {
+	if (j - i > 0 && resultado == -1) {
 
 		// Posición: la mitad
 		k = ((i + j) / 2);
@@ -59,6 +59,10 @@ int hastaDondeSonIgualesRecursivoFinalInterno (int i, int j, string frase1, stri
 			}
 
 		}
+
+	} else {
+
+		return resultado;
 
 	}
 

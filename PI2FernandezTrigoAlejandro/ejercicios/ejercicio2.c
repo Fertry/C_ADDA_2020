@@ -70,8 +70,27 @@ void funcionAuxiliarEjercicio2 (list lista) {
 
 		printf("%s\n", int_tostring(&numero1, mem));
 		printf("%s\n", int_tostring(&numero2, mem));
-		printf("1. Iterativo: %d\n", resultadoIterativo);
-		printf("2. Recursivo final: %d\n", resultadoRecursivoFinal);
+
+		if (resultadoIterativo == 0) {
+
+			printf("1. Iterativo: False\n");
+
+		} else {
+
+			printf("1. Iterativo: True\n");
+
+		}
+
+		if (resultadoRecursivoFinal == 0) {
+
+			printf("2. Recursivo final: False\n");
+
+		} else {
+
+			printf("2. Recursivo final: True\n");
+
+		}
+
 		printf("\n");
 		i++;
 

@@ -56,7 +56,7 @@ void funcionAuxiliarEjercicio1 (list lista) {
 	string frase1;
 	string frase2;
 	int posicionIterativo;
-	//int posicionRecursivoFinal;
+	int posicionRecursivoFinal;
 
 	while (i < list_size(&lista)) {
 
@@ -65,12 +65,12 @@ void funcionAuxiliarEjercicio1 (list lista) {
 		frase2 = *(string*) list_get(&parDeFrases, 1);
 
 		posicionIterativo = hastaDondeSonIgualesIterativo(frase1, frase2);
-		//posicionRecursivoFinal = hastaDondeSonIgualesRecursivoFinal(frases);
+		posicionRecursivoFinal = hastaDondeSonIgualesRecursivoFinal(frase1, frase2);
 
 		printf("%s\n", string_tostring(&frase1, mem));
 		printf("%s\n", string_tostring(&frase2, mem));
 		printf("1. Iterativo: %d\n", posicionIterativo);
-		//printf("2. Recursivo final: %d\n", posicionRecursivoFinal);
+		printf("2. Recursivo final: %d\n", posicionRecursivoFinal);
 		printf("\n");
 		i++;
 

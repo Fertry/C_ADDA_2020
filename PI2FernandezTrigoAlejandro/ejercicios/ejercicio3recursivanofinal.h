@@ -18,6 +18,6 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-long elevaARecursivoNoFinal (long numero1, int numero2);
+long elevaARecursivoNoFinal (long exponente, int n);
 
 #endif /* EJERCICIOS_EJERCICIO3RECURSIVANOFINAL_H_ */

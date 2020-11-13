@@ -53,28 +53,28 @@ list leeDatosEjercicio3 (char * fichero) {
 // como pares de integers recibamos por fichero:
 void funcionAuxiliarEjercicio3 (list lista) {
 
+	int n;
 	int i = 0;
-	long base;
-	int exponente;
+	long exponente;
 	char mem[500];
 	long resultadoIterativo;
-	long resultadoRecursivoFinal;
+	//long resultadoRecursivoFinal;
 	long resultadoRecursivoNoFinal;
 
 	while (i < list_size(&lista)) {
 
 		list parDeNumeros = *(list*) list_get(&lista, i);
-		base = *(long*) list_get(&parDeNumeros, 0);
-		exponente = *(int*) list_get(&parDeNumeros, 1);
+		exponente = *(long*) list_get(&parDeNumeros, 0);
+		n = *(int*) list_get(&parDeNumeros, 1);
 
-		resultadoIterativo = elevaAIterativo(base, exponente);
-		resultadoRecursivoFinal = elevaARecursivoFinal(base, exponente);
-		resultadoRecursivoNoFinal = elevaARecursivoNoFinal(base, exponente);
+		resultadoIterativo = elevaAIterativo(exponente, n);
+		//resultadoRecursivoFinal = elevaARecursivoFinal(exponente, n);
+		resultadoRecursivoNoFinal = elevaARecursivoNoFinal(exponente, n);
 
-		printf("%s\n", long_tostring(&base, mem));
-		printf("%s\n", int_tostring(&exponente, mem));
+		printf("%s\n", long_tostring(&exponente, mem));
+		printf("%s\n", int_tostring(&n, mem));
 		printf("1. Iterativo: %ld\n", resultadoIterativo);
-		printf("2. Recursivo final: %ld\n", resultadoRecursivoFinal);
+		//printf("2. Recursivo final: %ld\n", resultadoRecursivoFinal);
 		printf("3. Recursivo no final: %ld\n", resultadoRecursivoNoFinal);
 		printf("\n");
 		i++;

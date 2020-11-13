@@ -17,8 +17,8 @@
 
 // Dados dos strings, donde cada uno representa una frase,
 // itera sobre ambos. Determina en que punto de ambas frases
-// dejan de ser iguales y devuelve esa posición numérica, para ello se emplea el
-// algoritmo de búsqueda binaria:
+// dejan de ser iguales y devuelve esa posicion numerica, para ello se emplea el
+// algoritmo de búsqueda binaria para obtener una complejidad de orden logaritmico:
 int hastaDondeSonIgualesIterativo (string frase1, string frase2) {
 
 	int i = 0;
@@ -54,31 +54,3 @@ int hastaDondeSonIgualesIterativo (string frase1, string frase2) {
 	return resultado;
 
 }
-
-
-// Versión "simple" usando while no óptima:
-/*
-int hastaDondeSonIgualesIterativo (string frase1, string frase2) {
-
-	int i = 0;
-	bool verdadero = true;
-
-	while (i < sizeof(frase1) && verdadero) {
-
-		//*(frase1 + i) == *(frase2 + i)
-		if (frase1.data[i] == frase2.data[i]) {
-
-			i++;
-
-		} else {
-
-			verdadero = false;
-
-		}
-
-	}
-
-	return i;
-
-}
- */
