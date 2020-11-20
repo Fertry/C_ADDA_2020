@@ -32,15 +32,11 @@ long elevaARecursivoFinalInterno (long base, long exponente, int n) {
 
 		if (n % 2 == 1) {
 
-			// base *= base && exponente *= exponente && n = n / 2;
-			return elevaARecursivoFinalInterno((base *= exponente), (exponente *= exponente), (n / 2));
-
-		} else {
-
-			// base *= base && exponente *= exponente && n = n / 2;
-			return elevaARecursivoFinalInterno((base *= exponente), exponente, (n / 2));
+			base = base * exponente;
 
 		}
+
+		return elevaARecursivoFinalInterno(base, (exponente *= exponente), (n / 2));
 
 	}
 

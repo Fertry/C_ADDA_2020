@@ -69,37 +69,3 @@ int hastaDondeSonIgualesRecursivoFinalInterno (int i, int j, string frase1, stri
 	return resultado;
 
 }
-
-
-// Versión "simple" usando while no óptima:
-/*
-int hastaDondeSonIgualesRecursivoFinal (list lista) {
-
-	return hastaDondeSonIgualesRecursivoFinalInterno (0, lista);
-
-}
-
-int hastaDondeSonIgualesRecursivoFinalInterno (int i, list lista) {
-
-	char *frase1 = (char*) list_get(&lista, 0);
-	char *frase2 = (char*) list_get(&lista, 1);
-
-	while (i < sizeof(frase1)) {
-
-		if (*(frase1 + i) == *(frase2 + i)) {
-
-			i++;
-			return hastaDondeSonIgualesRecursivoFinalInterno (i, lista);
-
-		} else {
-
-			return i;
-
-		}
-
-	}
-
-	return i;
-
-}
-*/
