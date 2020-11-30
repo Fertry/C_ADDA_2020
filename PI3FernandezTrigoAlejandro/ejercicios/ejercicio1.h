@@ -19,6 +19,5 @@
 // Cabeceras de las funciones:
 matrix leeDatosEjercicio1 (char * fichero);
 void funcionAuxiliarEjercicio1(matrix matriz);
-void muestraMatrizPorPantalla(matrix matriz);
 
 #endif /* EJERCICIOS_EJERCICIO1_H_ */

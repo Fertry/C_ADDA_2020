@@ -19,42 +19,57 @@
 // toMultiArray() de Miguel Toro para acceder a las posiciones con facilidad:
 matrix leeDatosEjercicio1 (char * fichero) {
 
-	matrix resultado;
+	list lista = list_empty(list_type);
+	iterator filas = file_iterable_pchar(fichero);
 
-	/*
-    int fila = 0;
-    int columna = 0;
-    int dimension = 0;
-	iterator lista = file_iterable_pchar(fichero);
+	while (iterable_has_next(&filas)) {
 
-    while (iterable_has_next(&lista)) {
+		char *fila = (char*) iterable_next(&filas);
+		iterator miniFila = split_iterable_pchar(fila, " ");
+		list miniLista = list_empty(int_type);
 
-    	char *fila = (char*) iterable_next(&lista);
-    	iterator miniFila = split_iterable_pchar(fila, " ");
-        int miniLista [];
+		while (iterable_has_next(&miniFila)) {
 
-        while (iterable_has_next(&miniFila)) {
+			char *numeroCaracter = (char*) iterable_next(&miniFila);
+			int numeroEntero;
+			int_type.parse(&numeroEntero, numeroCaracter);
+			list_add(&miniLista, &numeroEntero);
 
-            char *numeros = (char*) iterable_next(&miniFila);
-            int numero = int_of_pchar(numeros);
-            list_add(&miniLista, &numero);
+		}
 
-        }
+		list_add(&lista, &miniLista);
 
-        while (columna < 0) {
+	}
 
+	int i = 0;
+	int posicion = 0;
+	list dimension = *(list*) list_get(&lista, 0);
 
-        }
+	int rango = list_size(&dimension);
+	int array[rango * rango];
 
-    	int rango = sizeof(list_get(&fila, 0));
+	while (i < lista.size) {
 
+		int j = 0;
+		list elementos = *(list*) list_get(&lista, i);
 
-    }
+		while (j < elementos.size) {
 
-    //resultado = matrix_of_array(int * NULL, rango, rango);
-	*/
+			int elemento = *(int*) list_get(&elementos, j);
+			array [posicion] = elemento;
+			posicion++;
+			j++;
 
-    return resultado;
+		}
+
+		j = 0;
+		i++;
+
+	}
+
+	matrix resultado = matrix_of_array(array, rango, rango);
+
+	return resultado;
 
 }
 
@@ -63,39 +78,38 @@ matrix leeDatosEjercicio1 (char * fichero) {
 // acorde al fichero de salida de ejemplo proporcionado:
 void funcionAuxiliarEjercicio1(matrix matriz) {
 
+	char mem[2000];
+	int dimension = matriz.nf;
+	bool resultado = ejercicio1recursivo(matriz);
 
-}
+	printf("Matriz de entrada de dimensión: %d * %d: %d\n", dimension, dimension, dimension * dimension);
 
-// Funcion privada para mostrar una matriz por pantalla al pasarse esta
-// por parametro siempre y cuando la dimension no exceda 16:
-void muestraMatrizPorPantalla(matrix matriz) {
+	if (matriz.nf > 8) {
 
-	int fila;
-	int columna;
-
-	if (matriz.__n > 16) {
-
-		printf("La matriz no se muestra debido al tamaño.\n");
+		printf("La matriz no se muestra debido al tamaño.");
 
 	} else {
 
-		for (fila = 0; fila < matriz.__n; fila++) {
-			for (columna = 0; columna < matriz.__n; columna++) {
+		// Método de Miguel Toro:
+		matrix_print(matriz, mem);
 
-				printf(matriz [fila][columna]);
+	}
 
-				if (columna != matriz.__n - 1) {
+	printf("\n");
+	printf("¿Es la matriz válida? --> %s\n", bool_tostring(&resultado, mem));
 
-					printf(" ");
+}
 
-				}
+/*
+// Método propio "a lo bestia":
+int i, j;
+for (i = 0; i < matriz.nf; i++) {
+	for (j = 0; j < matriz.nc; j++) {
 
-			}
-
-			printf("");
-
-		}
+		printf("%d ", matrix_get(matriz,i,j));
+		printf("\n");
 
 	}
 
 }
+*/

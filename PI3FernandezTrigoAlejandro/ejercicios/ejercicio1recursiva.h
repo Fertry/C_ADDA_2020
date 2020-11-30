@@ -17,5 +17,6 @@
 #include "types/matrices.h"
 
 // Cabeceras de las funciones:
+bool ejercicio1recursivo (matrix matriz);
 
 #endif /* EJERCICIOS_EJERCICIO1RECURSIVA_H_ */
