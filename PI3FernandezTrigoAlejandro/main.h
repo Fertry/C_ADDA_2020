@@ -14,5 +14,6 @@
 #include "types/math2.h"
 #include "types/types.h"
 #include "types/list.h"
+#include "types/matrices.h"
 
 #endif /* MAIN_H_ */

@@ -1,8 +1,20 @@
 /*
- * ejercicio3recursivaconmemoria.c
- *
- *  Created on: 27 nov. 2020
- *      Author: aleja
+ *  	Analisis y Diseño de Datos y Algoritmos - 2020
+ *      Author: Alejandro Fernandez Trigo
+ *      Practica Individual 3
  */
 
+#include "ejercicio3recursivaconmemoria.h"
 
+// ###################################################################################
+// ###################################################################################
+// ####################### 				EJERCICIO 3 				 #################
+// ###################################################################################
+// ###################################################################################
+
+//
+int ejercicio3RecursivoConMemoria (int numero) {
+
+	return 1;
+
+}

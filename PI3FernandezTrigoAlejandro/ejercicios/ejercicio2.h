@@ -16,5 +16,8 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
+list leeDatosEjercicio2 (char * fichero);
+void funcionAuxiliarEjercicio2 (list lista);
+int sumatorio (list lista);
 
 #endif /* EJERCICIOS_EJERCICIO2_H_ */

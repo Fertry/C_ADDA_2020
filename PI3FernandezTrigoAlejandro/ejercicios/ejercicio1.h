@@ -14,10 +14,11 @@
 #include "types/math2.h"
 #include "types/types.h"
 #include "types/list.h"
+#include "types/matrices.h"
 
 // Cabeceras de las funciones:
-int** leeDatosEjercicio1 (char * fichero);
-void funcionAuxiliarEjercicio1();
-void muestraMatrizPorPantalla();
+matrix leeDatosEjercicio1 (char * fichero);
+void funcionAuxiliarEjercicio1(matrix matriz);
+void muestraMatrizPorPantalla(matrix matriz);
 
 #endif /* EJERCICIOS_EJERCICIO1_H_ */

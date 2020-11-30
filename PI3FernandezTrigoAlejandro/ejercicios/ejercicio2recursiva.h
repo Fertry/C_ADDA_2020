@@ -16,5 +16,6 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
+list ejercicio2recursiva(list lista);
 
 #endif /* EJERCICIOS_EJERCICIO2RECURSIVA_H_ */

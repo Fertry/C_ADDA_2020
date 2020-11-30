@@ -19,17 +19,19 @@
 // toMultiArray() de Miguel Toro para acceder a las posiciones con facilidad:
 matrix leeDatosEjercicio1 (char * fichero) {
 
+	matrix resultado;
+
+	/*
     int fila = 0;
     int columna = 0;
     int dimension = 0;
 	iterator lista = file_iterable_pchar(fichero);
-	matrix resultado;
 
     while (iterable_has_next(&lista)) {
 
     	char *fila = (char*) iterable_next(&lista);
     	iterator miniFila = split_iterable_pchar(fila, " ");
-        list miniLista = list_empty(int_type);
+        int miniLista [];
 
         while (iterable_has_next(&miniFila)) {
 
@@ -39,7 +41,7 @@ matrix leeDatosEjercicio1 (char * fichero) {
 
         }
 
-        while (columna < ) {
+        while (columna < 0) {
 
 
         }
@@ -50,56 +52,50 @@ matrix leeDatosEjercicio1 (char * fichero) {
     }
 
     //resultado = matrix_of_array(int * NULL, rango, rango);
+	*/
 
     return resultado;
-
-
-    /*
-     	public static Integer [][] leeDatosEjercicio1(String fichero) {
-
-		int fila = 0;
-		int columna = 0;
-		int dimension = 0;
-		List <String> filas = StreamsS.file(fichero).collect(Collectors.toList());
-		int rango = filas.get(0).split(" ").length;
-		Integer[] resultado = new Integer [rango * rango];
-
-		while (fila < filas.size()) {
-
-			String[] numeros = filas.get(fila).split(" ");
-
-			while (columna < numeros.length) {
-
-				resultado [dimension] = Integer.parseInt(numeros[columna]);
-
-				columna++;
-				dimension++;
-
-			}
-
-			fila++;
-			columna = 0;
-
-		}
-
-		return Arrays2.toMultiArray(resultado, rango, rango);
-
-	}
-     */
 
 }
 
 // Funcion auxiliar para, dado una matriz leida por la funcion leeDatosEjercicio1(),
-// llamar a la función recursiva que resuelve el ejercicio y formatear la salida
+// llamar a la funcion recursiva que resuelve el ejercicio y formatear la salida
 // acorde al fichero de salida de ejemplo proporcionado:
-void funcionAuxiliarEjercicio1() {
+void funcionAuxiliarEjercicio1(matrix matriz) {
 
 
 }
 
 // Funcion privada para mostrar una matriz por pantalla al pasarse esta
 // por parametro siempre y cuando la dimension no exceda 16:
-void muestraMatrizPorPantalla() {
+void muestraMatrizPorPantalla(matrix matriz) {
 
+	int fila;
+	int columna;
+
+	if (matriz.__n > 16) {
+
+		printf("La matriz no se muestra debido al tamaño.\n");
+
+	} else {
+
+		for (fila = 0; fila < matriz.__n; fila++) {
+			for (columna = 0; columna < matriz.__n; columna++) {
+
+				printf(matriz [fila][columna]);
+
+				if (columna != matriz.__n - 1) {
+
+					printf(" ");
+
+				}
+
+			}
+
+			printf("");
+
+		}
+
+	}
 
 }
