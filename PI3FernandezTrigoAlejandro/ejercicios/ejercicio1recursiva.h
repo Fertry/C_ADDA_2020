@@ -17,6 +17,9 @@
 #include "types/matrices.h"
 
 // Cabeceras de las funciones:
-bool ejercicio1recursivo (matrix matriz);
+bool ejercicio1Recursivo(matrix matriz);
+bool ejercicio1RecursivoPrivado(matrix matriz);
+matrix calculaMatrizPartidaEnCuatro(matrix matriz, int filaDePartida, int columnaDePartida);
+bool extremosDistintosONo(matrix matriz);
 
 #endif /* EJERCICIOS_EJERCICIO1RECURSIVA_H_ */

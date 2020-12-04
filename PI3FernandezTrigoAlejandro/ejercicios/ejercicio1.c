@@ -80,7 +80,7 @@ void funcionAuxiliarEjercicio1(matrix matriz) {
 
 	char mem[2000];
 	int dimension = matriz.nf;
-	bool resultado = ejercicio1recursivo(matriz);
+	bool resultado = ejercicio1Recursivo(matriz);
 
 	printf("Matriz de entrada de dimensión: %d * %d: %d\n", dimension, dimension, dimension * dimension);
 
@@ -95,8 +95,8 @@ void funcionAuxiliarEjercicio1(matrix matriz) {
 
 	}
 
-	printf("\n");
 	printf("¿Es la matriz válida? --> %s\n", bool_tostring(&resultado, mem));
+	printf("\n");
 
 }
 
