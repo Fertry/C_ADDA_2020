@@ -12,10 +12,15 @@
 // ###################################################################################
 // ###################################################################################
 
-//
-int ejercicio4RecursivoConMemoria (int numeroA, int numeroB) {
+/*
+Funcion que dados dos enteros a, b, calcule la siguiente sucesion numerica en funcion
+de dos casos bases y uno recursivo que se llama a si mismo tantas veces como sea necesario
+haciendo uso de memoria con un HashTable para evitar repetir calculos y devuelve el
+resultado en forma de Long:
+*/
+long ejercicio4RecursivoConMemoria (int numeroA, int numeroB) {
 
-	return numeroA * numeroB;
+	return 1L;
 
 }
 

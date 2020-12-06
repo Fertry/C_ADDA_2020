@@ -13,9 +13,11 @@
 // ###################################################################################
 // ###################################################################################
 
-// Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
-// y en cada linea nºs separados por comas, devuelve una lista de listas donde
-// cada lista interna representa un conjunto de números que se pasan al ejercicio:
+/*
+Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
+y en cada linea nºs separados por comas, devuelve una lista de listas donde
+cada lista interna representa un conjunto de números que se pasan al ejercicio:
+*/
 list leeDatosEjercicio2 (char * fichero) {
 
     iterator lista = file_iterable_pchar(fichero);
@@ -26,7 +28,7 @@ list leeDatosEjercicio2 (char * fichero) {
 
         miniLista = list_empty(int_type);
         char *fila = (char*) iterable_next(&lista);
-        iterator miniFila = split_iterable_pchar(fila, ", ");
+        iterator miniFila = text_to_iterable_pchar(fila, ", ");
 
         while (iterable_has_next(&miniFila)) {
 
@@ -44,9 +46,11 @@ list leeDatosEjercicio2 (char * fichero) {
 
 }
 
-// Funcion auxiliar para, dado una lista de listas de integers devuelta por
-// la función de lectura, invocar a la funcion recursiva que resuelve el
-// ejercicio tantas veces como filas tenga el fichero de entrada:
+/*
+Funcion auxiliar para, dado una lista de listas de integers devuelta por
+la función de lectura, invocar a la funcion recursiva que resuelve el
+ejercicio tantas veces como filas tenga el fichero de entrada:
+*/
 void funcionAuxiliarEjercicio2 (list lista) {
 
 	int i = 0;
@@ -58,7 +62,7 @@ void funcionAuxiliarEjercicio2 (list lista) {
 
 		list numeros = *(list*) list_get(&lista, i);
 
-		// resultado = ejercicio2recursivo(numeros);
+		resultado = ejercicio2recursivo(numeros);
 		int suma = sumatorio(numeros);
 
 		printf("Lista de entrada: ");
@@ -75,6 +79,7 @@ void funcionAuxiliarEjercicio2 (list lista) {
 
 }
 
+/*
 // Funcion auxiliar que dado una lista de enteros, devuelve su suma:
 int sumatorio (list lista) {
 
@@ -93,3 +98,4 @@ int sumatorio (list lista) {
 	return sumatorio;
 
 }
+*/

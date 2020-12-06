@@ -16,6 +16,6 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-int ejercicio3Iterativo (int numero);
+long ejercicio3Iterativo (int numero);
 
 #endif /* EJERCICIOS_EJERCICIO3ITERATIVA_H_ */

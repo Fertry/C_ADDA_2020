@@ -13,10 +13,12 @@
 // ###################################################################################
 // ###################################################################################
 
-// Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
-// y en cada linea un nº n de numeros enteros, las filas del fichero representan las
-// filas de una matriz cuadrada de orden n*n. Pasamos los numeros de las filas al metodo
-// toMultiArray() de Miguel Toro para acceder a las posiciones con facilidad:
+/*
+Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
+y en cada linea un nº n de numeros enteros, las filas del fichero representan las
+filas de una matriz cuadrada de orden n*n. Pasamos los numeros de las filas al metodo
+toMultiArray() de Miguel Toro para acceder a las posiciones con facilidad:
+*/
 matrix leeDatosEjercicio1 (char * fichero) {
 
 	list lista = list_empty(list_type);
@@ -25,7 +27,7 @@ matrix leeDatosEjercicio1 (char * fichero) {
 	while (iterable_has_next(&filas)) {
 
 		char *fila = (char*) iterable_next(&filas);
-		iterator miniFila = split_iterable_pchar(fila, " ");
+		iterator miniFila = text_to_iterable_pchar(fila, " ");
 		list miniLista = list_empty(int_type);
 
 		while (iterable_has_next(&miniFila)) {
@@ -45,6 +47,7 @@ matrix leeDatosEjercicio1 (char * fichero) {
 	int posicion = 0;
 	list dimension = *(list*) list_get(&lista, 0);
 
+	//int rango = dimension.size;
 	int rango = list_size(&dimension);
 	int array[rango * rango];
 
@@ -73,14 +76,16 @@ matrix leeDatosEjercicio1 (char * fichero) {
 
 }
 
-// Funcion auxiliar para, dado una matriz leida por la funcion leeDatosEjercicio1(),
-// llamar a la funcion recursiva que resuelve el ejercicio y formatear la salida
-// acorde al fichero de salida de ejemplo proporcionado:
+/*
+Funcion auxiliar para, dado una matriz leida por la funcion leeDatosEjercicio1(),
+llamar a la funcion recursiva que resuelve el ejercicio y formatear la salida
+acorde al fichero de salida de ejemplo proporcionado:
+*/
 void funcionAuxiliarEjercicio1(matrix matriz) {
 
 	char mem[2000];
 	int dimension = matriz.nf;
-	bool resultado = ejercicio1Recursivo(matriz);
+	bool resultado = ejercicio1RecursivoC(matriz, 0, 0, dimension);
 
 	printf("Matriz de entrada de dimensión: %d * %d: %d\n", dimension, dimension, dimension * dimension);
 
@@ -90,8 +95,22 @@ void funcionAuxiliarEjercicio1(matrix matriz) {
 
 	} else {
 
-		// Método de Miguel Toro:
+		// Metodo de Miguel Toro:
 		matrix_print(matriz, mem);
+
+		/*
+		// Metodo propio "a lo bestia":
+		int i, j;
+		for (i = 0; i < matriz.nf; i++) {
+			for (j = 0; j < matriz.nc; j++) {
+
+				printf("%d ", matrix_get(matriz,i,j));
+				printf("\n");
+
+			}
+
+		}
+		*/
 
 	}
 
@@ -99,17 +118,3 @@ void funcionAuxiliarEjercicio1(matrix matriz) {
 	printf("\n");
 
 }
-
-/*
-// Método propio "a lo bestia":
-int i, j;
-for (i = 0; i < matriz.nf; i++) {
-	for (j = 0; j < matriz.nc; j++) {
-
-		printf("%d ", matrix_get(matriz,i,j));
-		printf("\n");
-
-	}
-
-}
-*/

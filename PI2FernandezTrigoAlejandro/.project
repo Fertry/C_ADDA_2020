@@ -23,4 +23,11 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Curso2018</name>
+			<type>2</type>
+			<location>C:/Users/aleja/Documents/C/ADDA/C/Curso2018</location>
+		</link>
+	</linkedResources>
 </projectDescription>

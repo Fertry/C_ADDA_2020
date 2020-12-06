@@ -15,8 +15,10 @@
 #include "types/types.h"
 #include "types/list.h"
 #include "types/matrices.h"
+#include "types/set.h"
 
 // Cabeceras de las funciones:
+bool ejercicio1RecursivoC(matrix matriz, int fila, int columna, int dimension);
 bool ejercicio1Recursivo(matrix matriz);
 bool ejercicio1RecursivoPrivado(matrix matriz);
 matrix calculaMatrizPartidaEnCuatro(matrix matriz, int filaDePartida, int columnaDePartida);

@@ -12,9 +12,13 @@
 // ###################################################################################
 // ###################################################################################
 
-//
-int ejercicio4Iterativo (int numeroA, int numeroB) {
+/*
+Funcion que dados dos enteros a, b, calcule la siguiente sucesion numerica de forma
+iterativa gracias a un bucle while en base a los parametros de entrada y devuelve
+el resultado como Long:
+*/
+long ejercicio4Iterativo (int numeroA, int numeroB) {
 
-	return numeroA * numeroB;
+	return 1L;
 
 }

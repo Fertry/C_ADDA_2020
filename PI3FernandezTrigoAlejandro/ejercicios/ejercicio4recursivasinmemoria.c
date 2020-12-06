@@ -12,9 +12,33 @@
 // ###################################################################################
 // ###################################################################################
 
-//
-int ejercicio4RecursivoSinMemoria (int numeroA, int numeroB) {
+/*
+Funcion que dados dos enteros a, b, calcule la siguiente sucesion numerica en funcion
+de dos casos bases y uno recursivo que se llama a si mismo tantas veces como sea necesario
+y devuelve el resultado en forma de Long:
+*/
+long ejercicio4RecursivoSinMemoria (int numeroA, int numeroB) {
 
-	return 1;
+	long resultado;
+
+	// Casos bases:
+	if (numeroA < 2 && numeroB < 2) {
+
+		resultado = (long) (numeroA + pow(numeroB, 2));
+
+	} else if (numeroA < 2 || numeroB < 2) {
+
+		resultado = (long) (pow(numeroA, 2) + numeroB);
+
+	// Caso recursivo:
+	} else {
+
+		resultado = (long) ejercicio4RecursivoSinMemoria((numeroA / 2), (numeroB - 1)) +
+					ejercicio4RecursivoSinMemoria((numeroA / 3), (numeroB - 2)) +
+					ejercicio4RecursivoSinMemoria((numeroA - 2), (numeroB / 4));
+
+	}
+
+	return resultado;
 
 }

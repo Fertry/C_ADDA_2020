@@ -28,7 +28,7 @@ list leeDatosEjercicio1 (char * fichero) {
 
         miniLista = list_empty(int_type);
         char *fila = (char*) iterable_next(&lista);
-        iterator miniFila = split_iterable_pchar(fila, ", ");
+        iterator miniFila = text_to_iterable_pchar(fila, ", ");
 
         while (iterable_has_next(&miniFila)) {
 
@@ -56,7 +56,7 @@ list compruebaSiEsPrimo (list lista) {
 	while (i < list_size(&lista)) {
 		list listaNumeros = *(list*) list_get(&lista, i);
 
-		while (j < list_size(list_get(&lista, i))) {
+		while (j < list_size(list_get(&lista, i - 1))) {
 
 			int numero = *(int*) list_get(&listaNumeros, j);
 			if (es_primo(numero)) {

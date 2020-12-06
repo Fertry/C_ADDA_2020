@@ -16,6 +16,6 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-int ejercicio4RecursivoConMemoria (int numeroA, int numeroB);
+long ejercicio4RecursivoConMemoria (int numeroA, int numeroB);
 
 #endif /* EJERCICIOS_EJERCICIO4RECURSIVACONMEMORIA_H_ */

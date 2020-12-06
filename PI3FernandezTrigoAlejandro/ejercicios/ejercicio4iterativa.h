@@ -16,6 +16,6 @@
 #include "types/list.h"
 
 // Cabeceras de las funciones:
-int ejercicio4Iterativo (int numeroA, int numeroB);
+long ejercicio4Iterativo (int numeroA, int numeroB);
 
 #endif /* EJERCICIOS_EJERCICIO4ITERATIVA_H_ */

@@ -15,9 +15,11 @@
 // ###################################################################################
 // ###################################################################################
 
-// Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
-// y en cada linea dos enteros separados por coma, devuelve una lista de listas
-// de enteros donde cada minilista representa un par de enteros:
+/*
+Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
+y en cada linea dos enteros separados por coma, devuelve una lista de listas
+de enteros donde cada minilista representa un par de enteros:
+*/
 list leeDatosEjercicio4 (char * fichero) {
 
     iterator lista = file_iterable_pchar(fichero);
@@ -28,7 +30,7 @@ list leeDatosEjercicio4 (char * fichero) {
 
         miniLista = list_empty(int_type);
         char *fila = (char*) iterable_next(&lista);
-        iterator miniFila = split_iterable_pchar(fila, ",");
+        iterator miniFila = text_to_iterable_pchar(fila, ",");
 
         while (iterable_has_next(&miniFila)) {
 
@@ -46,15 +48,17 @@ list leeDatosEjercicio4 (char * fichero) {
 
 }
 
-// Funcion auxiliar para, dado una lista de listas de integers devuelta por
-// la funcion de lectura, invocar a las funciones que resuelven el
-// ejercicio tantas veces como pares de numeros tenga la lista de entrada:
+/*
+Funcion auxiliar para, dado una lista de listas de integers devuelta por
+la funcion de lectura, invocar a las funciones que resuelven el
+ejercicio tantas veces como pares de numeros tenga la lista de entrada:
+*/
 void funcionAuxiliarEjercicio4 (list lista) {
 
 	int i = 0;
-	int resultadoIterativo;
-	int resultadoRecursivoConMemoria;
-	int resultadoRecursivoSinMemoria;
+	long resultadoIterativo;
+	long resultadoRecursivoConMemoria;
+	long resultadoRecursivoSinMemoria;
 
 	while (i < list_size(&lista)) {
 
@@ -68,11 +72,11 @@ void funcionAuxiliarEjercicio4 (list lista) {
 
 		printf("Par de entrada: (a,b) = (%d,%d)\n", a, b);
 		printf("1. Resultado iterativo: ");
-		printf("%d\n", resultadoIterativo);
+		printf("%ld\n", resultadoIterativo);
 		printf("2. Resultado recursivo con memoria: ");
-		printf("%d\n", resultadoRecursivoConMemoria);
+		printf("%ld\n", resultadoRecursivoConMemoria);
 		printf("3. Resultado recursivo sin memoria: ");
-		printf("%d\n", resultadoRecursivoSinMemoria);
+		printf("%ld\n", resultadoRecursivoSinMemoria);
 		i++;
 
 	}
