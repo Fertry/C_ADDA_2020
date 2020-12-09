@@ -62,7 +62,7 @@ void funcionAuxiliarEjercicio2 (list lista) {
 
 		list numeros = *(list*) list_get(&lista, i);
 
-		resultado = ejercicio2recursivo(numeros);
+		//resultado = ejercicio2recursivo(numeros);
 		int suma = sumatorio(numeros);
 
 		printf("Lista de entrada: ");
@@ -78,24 +78,3 @@ void funcionAuxiliarEjercicio2 (list lista) {
 	}
 
 }
-
-/*
-// Funcion auxiliar que dado una lista de enteros, devuelve su suma:
-int sumatorio (list lista) {
-
-	int i = 0;
-	int numero = 0;
-	int sumatorio = 0;
-
-	while (i < list_size(&lista)) {
-
-		numero = *(int*) list_get(&lista, i);
-		sumatorio = sumatorio + numero;
-		i++;
-
-	}
-
-	return sumatorio;
-
-}
-*/

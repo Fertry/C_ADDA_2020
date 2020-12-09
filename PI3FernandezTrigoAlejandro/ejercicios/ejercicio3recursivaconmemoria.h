@@ -17,5 +17,6 @@
 
 // Cabeceras de las funciones:
 long ejercicio3RecursivoConMemoria (int numero);
+long ejercicio3RecursivoConMemoriaInterno (int numero, hash_table memoria);
 
 #endif /* EJERCICIOS_EJERCICIO3RECURSIVACONMEMORIA_H_ */

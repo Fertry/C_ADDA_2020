@@ -15,10 +15,27 @@
 /*
 Funcion que dado un nº n entero calcula la siguiente sucesion numerica
 haciendo uso de un bucle while y devuelve el resultado como Long:
+* Complejidad: ????????????????????????
 */
 long ejercicio3Iterativo (int numero) {
 
-	return 1;
+    int i = 3;
+    long f1 = 1L;
+    long f2 = 1L;
+    long f3 = 2L;
+    long fn = 0L;
+
+    while (i <= numero) {
+
+        fn = 4 * f1 + f2 + f3;
+        f3 = f2;
+        f2 = f1;
+        f1 = fn;
+        i++;
+
+    }
+
+    return fn;
 
 }
 
