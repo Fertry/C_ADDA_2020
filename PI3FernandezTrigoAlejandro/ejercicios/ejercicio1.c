@@ -84,6 +84,7 @@ acorde al fichero de salida de ejemplo proporcionado:
 void funcionAuxiliarEjercicio1(matrix matriz) {
 
 	char mem[2000];
+	char memprint[200];
 	int dimension = matriz.nf;
 	bool resultado = ejercicio1RecursivoC(matriz, 0, 0, dimension);
 
@@ -98,23 +99,9 @@ void funcionAuxiliarEjercicio1(matrix matriz) {
 		// Metodo de Miguel Toro:
 		matrix_print(matriz, mem);
 
-		/*
-		// Metodo propio "a lo bestia":
-		int i, j;
-		for (i = 0; i < matriz.nf; i++) {
-			for (j = 0; j < matriz.nc; j++) {
-
-				printf("%d ", matrix_get(matriz,i,j));
-				printf("\n");
-
-			}
-
-		}
-		*/
-
 	}
 
-	printf("¿Es la matriz válida? --> %s\n", bool_tostring(&resultado, mem));
+	printf("¿Es la matriz válida? --> %s\n", bool_tostring(&resultado, memprint));
 	printf("\n");
 
 }

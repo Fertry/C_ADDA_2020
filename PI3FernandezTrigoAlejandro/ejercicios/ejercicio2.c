@@ -63,7 +63,7 @@ void funcionAuxiliarEjercicio2 (list lista) {
 		list numeros = *(list*) list_get(&lista, i);
 
 		//resultado = ejercicio2recursivo(numeros);
-		int suma = sumatorio(numeros);
+		//int suma = sumatorio(numeros);
 
 		printf("Lista de entrada: ");
 		printf("%s\n", list_tostring(&numeros, mem));
@@ -71,7 +71,7 @@ void funcionAuxiliarEjercicio2 (list lista) {
 		printf("Subsecuencia: ");
 		printf("%s\n", list_tostring(&resultado, mem));
 		printf("Suma obtenida: ");
-		printf("%d\n", suma);
+		//printf("%d\n", suma);
 		printf("\n");
 		i++;
 

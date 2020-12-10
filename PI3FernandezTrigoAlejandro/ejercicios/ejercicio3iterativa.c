@@ -17,7 +17,7 @@ Funcion que dado un nº n entero calcula la siguiente sucesion numerica
 haciendo uso de un bucle while y devuelve el resultado como Long:
 * Complejidad: ????????????????????????
 */
-long ejercicio3Iterativo (int numero) {
+long ejercicio3Iterativo (long numero) {
 
     int i = 3;
     long f1 = 1L;
@@ -38,5 +38,3 @@ long ejercicio3Iterativo (int numero) {
     return fn;
 
 }
-
-

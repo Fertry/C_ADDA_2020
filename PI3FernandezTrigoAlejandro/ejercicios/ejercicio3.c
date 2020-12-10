@@ -48,20 +48,20 @@ ejercicio tantas veces como numeros tenga la lista de entrada:
 void funcionAuxiliarEjercicio3 (list lista) {
 
 	int i = 0;
-	long resultadoIterativo = 0;
-	long resultadoRecursivoConMemoria = 0;
-	long resultadoRecursivoSinMemoria = 0;
+	long resultadoIterativo = 0L;
+	long resultadoRecursivoConMemoria = 0L;
+	long resultadoRecursivoSinMemoria = 0L;
 
 	while (i < list_size(&lista)) {
 
-		int numero = *(int*) list_get(&lista, i);
+		long numero = *(long*) list_get(&lista, i);
 
 		resultadoIterativo = ejercicio3Iterativo(numero);
-		resultadoRecursivoSinMemoria = ejercicio3RecursivoConMemoria(numero);
+		//resultadoRecursivoSinMemoria = ejercicio3RecursivoConMemoria(numero);
 		resultadoRecursivoConMemoria = ejercicio3RecursivoSinMemoria(numero);
 
 		printf("Entero de entrada: ");
-		printf("%d\n", numero);
+		printf("%ld\n", numero);
 		printf("1. Resultado iterativo: ");
 		printf("%ld\n", resultadoIterativo);
 		printf("2. Resultado recursivo con memoria: ");

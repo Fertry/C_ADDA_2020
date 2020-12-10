@@ -19,7 +19,7 @@ veces como sea necesario y devuelve el resultado como Long:
 * Recursividad: 2 casos base y uno recursivo
 * Complejidad: ????????????????????????
 */
-long ejercicio3RecursivoSinMemoria (int numero) {
+long ejercicio3RecursivoSinMemoria (long numero) {
 
 	long resultado;
 
@@ -35,13 +35,13 @@ long ejercicio3RecursivoSinMemoria (int numero) {
 	// Caso recursivo:
 	} else {
 
-		resultado = (4 * ejercicio3RecursivoSinMemoria(numero - 1)) +
-					ejercicio3RecursivoSinMemoria(numero - 2) +
-					ejercicio3RecursivoSinMemoria(numero - 3);
+		resultado = (4 * ejercicio3RecursivoSinMemoria((numero - 1))) +
+					ejercicio3RecursivoSinMemoria((numero - 2)) +
+					ejercicio3RecursivoSinMemoria((numero - 3));
 
 	}
 
-	return (long) resultado;
+	return resultado;
 
 }
 
