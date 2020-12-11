@@ -17,7 +17,7 @@ int main() {
 	//char mem[2000];
 
 	// Variables:
-	//matrix matriz1 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada1.txt");
+	matrix matriz1 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada1.txt");
 	//matrix matriz2 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada2.txt");
 	//matrix matriz3 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada3.txt");
 	//matrix matriz4 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada4.txt");
@@ -30,7 +30,7 @@ int main() {
 	// Salida por consola:
 	//printf("###################################################################################\n");
 	//printf("############################# Test de Ejercicio 1 ################################\n");
-	//funcionAuxiliarEjercicio1(matriz1);
+	funcionAuxiliarEjercicio1(matriz1);
 	//funcionAuxiliarEjercicio1(matriz2);
 	//funcionAuxiliarEjercicio1(matriz3);
 	//funcionAuxiliarEjercicio1(matriz4);

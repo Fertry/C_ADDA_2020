@@ -44,7 +44,7 @@ long ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table 
 	// Casos bases:
 	if (hash_table_contains(&memoria, &lista)) {
 
-		resultado = hash_table_get(&memoria, &lista);
+		resultado = (long) hash_table_get(&memoria, &lista);
 
 	} else if (numeroA < 2 && numeroB < 2) {
 
