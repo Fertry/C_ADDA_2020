@@ -19,9 +19,9 @@ veces como sea necesario y devuelve el resultado como Long:
 * Recursividad: 2 casos base y uno recursivo
 * Complejidad: ????????????????????????
 */
-long ejercicio3RecursivoSinMemoria (long numero) {
+double ejercicio3RecursivoSinMemoria (int numero) {
 
-	long resultado;
+	double resultado;
 
 	// Casos bases:
 	if (numero == 0) {

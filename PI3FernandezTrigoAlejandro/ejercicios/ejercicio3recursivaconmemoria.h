@@ -17,7 +17,7 @@
 #include "types/hash_table.h"
 
 // Cabeceras de las funciones:
-long ejercicio3RecursivoConMemoria (long numero);
-long ejercicio3RecursivoConMemoriaInterno (long numero, hash_table memoria);
+double ejercicio3RecursivoConMemoria (int numero);
+double ejercicio3RecursivoConMemoriaInterno (int numero, hash_table memoria);
 
 #endif /* EJERCICIOS_EJERCICIO3RECURSIVACONMEMORIA_H_ */

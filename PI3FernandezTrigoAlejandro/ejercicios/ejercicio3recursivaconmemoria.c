@@ -16,9 +16,9 @@
 Funcion que llame al ejercicio recursivo pasando como parametro
 el HashTable que se emplea como memoria para actuar de forma opaca al usuario:
 */
-long ejercicio3RecursivoConMemoria (long numero) {
+double ejercicio3RecursivoConMemoria (int numero) {
 
-	hash_table memoria = hash_table_empty(long_type, long_type);
+	hash_table memoria = hash_table_empty(int_type, double_type);
 
 	return ejercicio3RecursivoConMemoriaInterno(numero, memoria);
 
@@ -30,29 +30,25 @@ en base a tres casos bases y uno recursivo que se llama a si mismo tantas
 veces como sea necesario haciendo uso de memoria con un HashTable para evitar
 repetir operaciones y devuelve el resultado como Long:
 * Recursividad: 3 casos base y uno recursivo
-* Complejidad: ????????????????????????
+* Complejidad: ?????????????????????
 */
-long ejercicio3RecursivoConMemoriaInterno (long numero, hash_table memoria) {
+double ejercicio3RecursivoConMemoriaInterno (int numero, hash_table memoria) {
 
-	long resultado = 0L;
+	double resultado = 0;
 
 	// Casos base:
-	// memoria.containsKey(numero)
 	if (hash_table_contains(&memoria, &numero)) {
 
-		// resultado = memoria.get(numero);
-		resultado = *(long*) hash_table_get(&memoria, &numero);
+		resultado = *(double*) hash_table_get(&memoria, &numero);
 
 	} else if (numero == 0) {
 
 		resultado = 2L;
-		// memoria.put(numero, resultado);
 		hash_table_put(&memoria, &numero, &resultado);
 
 	} else if (numero == 1 || numero == 2) {
 
 		resultado = 1L;
-		// memoria.put(numero, resultado);
 		hash_table_put(&memoria, &numero, &resultado);
 
 	// Caso recursivo:
@@ -63,7 +59,6 @@ long ejercicio3RecursivoConMemoriaInterno (long numero, hash_table memoria) {
 				+ ejercicio3RecursivoConMemoriaInterno((numero - 2), memoria)
 				+ ejercicio3RecursivoConMemoriaInterno((numero - 3), memoria);
 
-		// memoria.put(numero, resultado);
 		hash_table_put(&memoria, &numero, &resultado);
 
 	}

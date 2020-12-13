@@ -16,10 +16,10 @@
 Funcion que llame al ejercicio recursivo pasando como parametro
 el HashTable que se emplea como memoria para actuar de forma opaca al usuario:
 */
-long ejercicio4RecursivoConMemoria (int numeroA, int numeroB) {
+int ejercicio4RecursivoConMemoria (int numeroA, int numeroB) {
 
-	// Empleamos Tuple2 para "encapsular" los dos numeros que se reciben como parametros:
-	hash_table memoria = hash_table_empty(list_type, long_type);
+	// Empleamos pair_type para "encapsular" los dos numeros que se reciben como parametros:
+	hash_table memoria = hash_table_empty(int_pair_type, int_type);
 
 	return ejercicio4RecursivoConMemoriaInterno(numeroA, numeroB, memoria);
 
@@ -33,37 +33,36 @@ resultado en forma de Long:
 * Recursividad: 3 casos base y uno recursivo
 * Complejidad: ????????????????????????
 */
-long ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table memoria) {
+int ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table memoria) {
 
-	long resultado;
-	//Tuple2 < Integer, Integer > tupla = Tuple.create(numeroA, numeroB);
-	list lista = list_empty(int_type);
-	list_add(&lista, &numeroA);
-	list_add(&lista, &numeroB);
+	int resultado;
+	int_pair tupla;
+	tupla.a = numeroA;
+	tupla.b = numeroB;
 
 	// Casos bases:
-	if (hash_table_contains(&memoria, &lista)) {
+	if (hash_table_contains(&memoria, &tupla)) {
 
-		resultado = (long) hash_table_get(&memoria, &lista);
+		resultado = *(int*) hash_table_get(&memoria, &tupla);
 
 	} else if (numeroA < 2 && numeroB < 2) {
 
-		resultado = (long) (numeroA + pow(numeroB, 2));
-		hash_table_put(&memoria, &lista, &resultado);
+		resultado = (numeroA + pow(numeroB, 2));
+		hash_table_put(&memoria, &tupla, &resultado);
 
 	} else if (numeroA < 2 || numeroB < 2) {
 
-		resultado = (long) (pow(numeroA, 2) + numeroB);
-		hash_table_put(&memoria, &lista, &resultado);
+		resultado = (pow(numeroA, 2) + numeroB);
+		hash_table_put(&memoria, &tupla, &resultado);
 
 	// Caso recursivo:
 	} else {
 
-		resultado = (long) ejercicio4RecursivoConMemoriaInterno((numeroA / 2), (numeroB - 1), memoria) +
-						   ejercicio4RecursivoConMemoriaInterno((numeroA / 3), (numeroB - 2), memoria) +
-						   ejercicio4RecursivoConMemoriaInterno((numeroA - 2), (numeroB / 4), memoria);
+		resultado = ejercicio4RecursivoConMemoriaInterno((numeroA / 2), (numeroB - 1), memoria) +
+					ejercicio4RecursivoConMemoriaInterno((numeroA / 3), (numeroB - 2), memoria) +
+					ejercicio4RecursivoConMemoriaInterno((numeroA - 2), (numeroB / 4), memoria);
 
-		hash_table_put(&memoria, &lista, &resultado);
+		hash_table_put(&memoria, &tupla, &resultado);
 
 	}
 

@@ -17,13 +17,13 @@ Funcion que dado un nº n entero calcula la siguiente sucesion numerica
 haciendo uso de un bucle while y devuelve el resultado como Long:
 * Complejidad: ????????????????????????
 */
-long ejercicio3Iterativo (long numero) {
+double ejercicio3Iterativo (int numero) {
 
     int i = 3;
-    long f1 = 1L;
-    long f2 = 1L;
-    long f3 = 2L;
-    long fn = 0L;
+    double f1 = 1L;
+    double f2 = 1L;
+    double f3 = 2L;
+    double fn = 0L;
 
     while (i <= numero) {
 
