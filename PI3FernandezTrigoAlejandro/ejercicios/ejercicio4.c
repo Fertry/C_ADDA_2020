@@ -68,7 +68,7 @@ void funcionAuxiliarEjercicio4 (list lista) {
 
 		//resultadoIterativo = ejercicio4Iterativo(a, b);
 		resultadoRecursivoSinMemoria = ejercicio4RecursivoSinMemoria(a, b);
-		//resultadoRecursivoConMemoria = ejercicio4RecursivoConMemoria(a, b);
+		resultadoRecursivoConMemoria = ejercicio4RecursivoConMemoria(a, b);
 
 		printf("Par de entrada: (a,b) = (%d,%d)\n", a, b);
 		printf("1. Resultado iterativo: ");

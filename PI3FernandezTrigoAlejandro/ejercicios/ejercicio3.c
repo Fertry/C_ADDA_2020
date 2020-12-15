@@ -58,7 +58,7 @@ void funcionAuxiliarEjercicio3 (list lista) {
 
 		resultadoIterativo = ejercicio3Iterativo(numero);
 		resultadoRecursivoSinMemoria = ejercicio3RecursivoSinMemoria(numero);
-		//resultadoRecursivoConMemoria = ejercicio3RecursivoConMemoria(numero);
+		resultadoRecursivoConMemoria = ejercicio3RecursivoConMemoria(numero);
 
 		printf("Entero de entrada: ");
 		printf("%d\n", numero);

@@ -18,6 +18,6 @@
 
 // Cabeceras de las funciones:
 int ejercicio4RecursivoConMemoria (int numeroA, int numeroB);
-int ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table memoria);
+int ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table * memoria);
 
 #endif /* EJERCICIOS_EJERCICIO4RECURSIVACONMEMORIA_H_ */

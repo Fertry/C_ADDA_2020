@@ -20,7 +20,7 @@ double ejercicio3RecursivoConMemoria (int numero) {
 
 	hash_table memoria = hash_table_empty(int_type, double_type);
 
-	return ejercicio3RecursivoConMemoriaInterno(numero, memoria);
+	return ejercicio3RecursivoConMemoriaInterno(numero, &memoria);
 
 }
 
@@ -32,34 +32,33 @@ repetir operaciones y devuelve el resultado como Long:
 * Recursividad: 3 casos base y uno recursivo
 * Complejidad: ?????????????????????
 */
-double ejercicio3RecursivoConMemoriaInterno (int numero, hash_table memoria) {
+double ejercicio3RecursivoConMemoriaInterno (int numero, hash_table * memoria) {
 
 	double resultado = 0;
 
 	// Casos base:
-	if (hash_table_contains(&memoria, &numero)) {
+	if (hash_table_contains(memoria, &numero)) {
 
-		resultado = *(double*) hash_table_get(&memoria, &numero);
+		resultado = *(double*) hash_table_get(memoria, &numero);
 
 	} else if (numero == 0) {
 
 		resultado = 2L;
-		hash_table_put(&memoria, &numero, &resultado);
+		hash_table_put(memoria, &numero, &resultado);
 
 	} else if (numero == 1 || numero == 2) {
 
 		resultado = 1L;
-		hash_table_put(&memoria, &numero, &resultado);
+		hash_table_put(memoria, &numero, &resultado);
 
 	// Caso recursivo:
 	} else {
 
-		resultado = (4
-				* ejercicio3RecursivoConMemoriaInterno((numero - 1), memoria))
-				+ ejercicio3RecursivoConMemoriaInterno((numero - 2), memoria)
-				+ ejercicio3RecursivoConMemoriaInterno((numero - 3), memoria);
+		resultado = (4 * ejercicio3RecursivoConMemoriaInterno((numero - 1), memoria))
+				    + ejercicio3RecursivoConMemoriaInterno((numero - 2), memoria)
+				    + ejercicio3RecursivoConMemoriaInterno((numero - 3), memoria);
 
-		hash_table_put(&memoria, &numero, &resultado);
+		hash_table_put(memoria, &numero, &resultado);
 
 	}
 

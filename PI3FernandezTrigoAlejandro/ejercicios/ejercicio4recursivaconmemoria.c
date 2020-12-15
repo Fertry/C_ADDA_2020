@@ -16,12 +16,13 @@
 Funcion que llame al ejercicio recursivo pasando como parametro
 el HashTable que se emplea como memoria para actuar de forma opaca al usuario:
 */
+
 int ejercicio4RecursivoConMemoria (int numeroA, int numeroB) {
 
 	// Empleamos pair_type para "encapsular" los dos numeros que se reciben como parametros:
 	hash_table memoria = hash_table_empty(int_pair_type, int_type);
 
-	return ejercicio4RecursivoConMemoriaInterno(numeroA, numeroB, memoria);
+	return ejercicio4RecursivoConMemoriaInterno(numeroA, numeroB, &memoria);
 
 }
 
@@ -33,7 +34,7 @@ resultado en forma de Long:
 * Recursividad: 3 casos base y uno recursivo
 * Complejidad: ????????????????????????
 */
-int ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table memoria) {
+int ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table * memoria) {
 
 	int resultado;
 	int_pair tupla;
@@ -41,19 +42,19 @@ int ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table m
 	tupla.b = numeroB;
 
 	// Casos bases:
-	if (hash_table_contains(&memoria, &tupla)) {
+	if (hash_table_contains(memoria, &tupla)) {
 
-		resultado = *(int*) hash_table_get(&memoria, &tupla);
+		resultado = *(int*) hash_table_get(memoria, &tupla);
 
 	} else if (numeroA < 2 && numeroB < 2) {
 
 		resultado = (numeroA + pow(numeroB, 2));
-		hash_table_put(&memoria, &tupla, &resultado);
+		hash_table_put(memoria, &tupla, &resultado);
 
 	} else if (numeroA < 2 || numeroB < 2) {
 
 		resultado = (pow(numeroA, 2) + numeroB);
-		hash_table_put(&memoria, &tupla, &resultado);
+		hash_table_put(memoria, &tupla, &resultado);
 
 	// Caso recursivo:
 	} else {
@@ -62,11 +63,10 @@ int ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table m
 					ejercicio4RecursivoConMemoriaInterno((numeroA / 3), (numeroB - 2), memoria) +
 					ejercicio4RecursivoConMemoriaInterno((numeroA - 2), (numeroB / 4), memoria);
 
-		hash_table_put(&memoria, &tupla, &resultado);
+		hash_table_put(memoria, &tupla, &resultado);
 
 	}
 
 	return resultado;
 
 }
-

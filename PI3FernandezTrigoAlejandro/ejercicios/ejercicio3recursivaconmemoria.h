@@ -18,6 +18,6 @@
 
 // Cabeceras de las funciones:
 double ejercicio3RecursivoConMemoria (int numero);
-double ejercicio3RecursivoConMemoriaInterno (int numero, hash_table memoria);
+double ejercicio3RecursivoConMemoriaInterno (int numero, hash_table * memoria);
 
 #endif /* EJERCICIOS_EJERCICIO3RECURSIVACONMEMORIA_H_ */
