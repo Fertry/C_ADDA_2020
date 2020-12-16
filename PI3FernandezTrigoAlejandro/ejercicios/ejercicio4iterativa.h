@@ -14,6 +14,7 @@
 #include "types/math2.h"
 #include "types/types.h"
 #include "types/list.h"
+#include "types/hash_table.h"
 
 // Cabeceras de las funciones:
 long ejercicio4Iterativo (int numeroA, int numeroB);
