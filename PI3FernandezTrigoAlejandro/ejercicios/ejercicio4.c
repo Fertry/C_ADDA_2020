@@ -56,7 +56,7 @@ ejercicio tantas veces como pares de numeros tenga la lista de entrada:
 void funcionAuxiliarEjercicio4 (list lista) {
 
 	int i = 0;
-	int resultadoIterativo = 0;
+	long resultadoIterativo = 0L;
 	int resultadoRecursivoConMemoria = 0;
 	int resultadoRecursivoSinMemoria = 0;
 
@@ -66,13 +66,13 @@ void funcionAuxiliarEjercicio4 (list lista) {
 		int a = *(int*) list_get(&numeros, 0);
 		int b = *(int*) list_get(&numeros, 1);
 
-		//resultadoIterativo = ejercicio4Iterativo(a, b);
+		resultadoIterativo = ejercicio4Iterativo(a, b);
 		resultadoRecursivoSinMemoria = ejercicio4RecursivoSinMemoria(a, b);
 		resultadoRecursivoConMemoria = ejercicio4RecursivoConMemoria(a, b);
 
 		printf("Par de entrada: (a,b) = (%d,%d)\n", a, b);
 		printf("1. Resultado iterativo: ");
-		printf("%d\n", resultadoIterativo);
+		printf("%ld\n", resultadoIterativo);
 		printf("2. Resultado recursivo con memoria: ");
 		printf("%d\n", resultadoRecursivoConMemoria);
 		printf("3. Resultado recursivo sin memoria: ");

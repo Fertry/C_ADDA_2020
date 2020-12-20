@@ -15,7 +15,6 @@
 /*
 Funcion que dado un nº n entero calcula la siguiente sucesion numerica
 haciendo uso de un bucle while y devuelve el resultado como Long:
-* Complejidad: ????????????????????????
 */
 double ejercicio3Iterativo (int numero) {
 

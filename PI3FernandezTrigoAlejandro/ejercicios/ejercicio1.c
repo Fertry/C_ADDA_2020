@@ -17,7 +17,7 @@
 Funcion que lee un fichero de entrada; dado un fichero con multiples lineas
 y en cada linea un nº n de numeros enteros, las filas del fichero representan las
 filas de una matriz cuadrada de orden n*n. Pasamos los numeros de las filas al metodo
-toMultiArray() de Miguel Toro para acceder a las posiciones con facilidad:
+matrix_of_array() para acceder a las posiciones con facilidad:
 */
 matrix leeDatosEjercicio1 (char * fichero) {
 

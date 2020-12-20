@@ -19,7 +19,6 @@
  necesario hasta que la matriz sea 2x2 o no se cumpla el requerimiento de que
  sus cuatro esquinas difieran:
  * Recursividad: 2 casos base + 1 caso recursivo multiple
- * Complejidad: ????????????????????????
  */
 bool ejercicio1RecursivoC(matrix matriz, int fila, int columna, int dimension) {
 

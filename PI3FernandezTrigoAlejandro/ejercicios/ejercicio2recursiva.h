@@ -14,8 +14,11 @@
 #include "types/math2.h"
 #include "types/types.h"
 #include "types/list.h"
+#include "ejemplos/tupla.h"
 
 // Cabeceras de las funciones:
-list ejercicio2recursiva(list lista);
+smax ejercicio2Recursivo(list lista);
+smax ejercicio2RecursivoInterno(list lista, int inicio, int fin);
+smax calculaSecuenciaMitad(list lista, int i, int j, int k);
 
 #endif /* EJERCICIOS_EJERCICIO2RECURSIVA_H_ */

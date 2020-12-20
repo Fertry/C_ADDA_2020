@@ -17,7 +17,6 @@ Funcion que dados dos enteros a, b, calcule la siguiente sucesion numerica en fu
 de dos casos bases y uno recursivo que se llama a si mismo tantas veces como sea necesario
 y devuelve el resultado en forma de Long:
 * Recursividad: 2 casos base y uno recursivo
-* Complejidad: ????????????????????????
 */
 long ejercicio4RecursivoSinMemoria (int numeroA, int numeroB) {
 

@@ -14,8 +14,6 @@
 // Funcion principal:
 int main() {
 
-	//char mem[2000];
-
 	// Variables:
 	//matrix matriz1 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada1.txt");
 	//matrix matriz2 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada2.txt");
@@ -23,13 +21,11 @@ int main() {
 	//matrix matriz4 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada4.txt");
 	//matrix matriz5 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada5.txt");
 	//matrix matriz6 = leeDatosEjercicio1("ficheros/PI3Ej1DatosEntrada6.txt");
-	//list listaNumeros2 = leeDatosEjercicio2("ficheros/PI3Ej2DatosEntrada.txt");
+	list listaNumeros2 = leeDatosEjercicio2("ficheros/PI3Ej2DatosEntrada.txt");
 	list listaNumeros3 = leeDatosEjercicio3("ficheros/PI3Ej3DatosEntrada.txt");
 	list listaNumeros4 = leeDatosEjercicio4("ficheros/PI3Ej4DatosEntrada.txt");
 
 	// Salida por consola:
-	printf("###################################################################################\n");
-	printf("############################# Test de Ejercicio 1 #################################\n");
 	//funcionAuxiliarEjercicio1(matriz1);
 	//funcionAuxiliarEjercicio1(matriz2);
 	//funcionAuxiliarEjercicio1(matriz3);
@@ -42,7 +38,7 @@ int main() {
 
 	printf("###################################################################################\n");
 	printf("############################# Test de Ejercicio 2 #################################\n");
-	//funcionAuxiliarEjercicio2(listaNumeros2);
+	funcionAuxiliarEjercicio2(listaNumeros2);
 	printf("###################################################################################\n");
 	printf("###################################################################################\n");
 	printf("\n");

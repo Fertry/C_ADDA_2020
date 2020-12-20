@@ -54,27 +54,44 @@ ejercicio tantas veces como filas tenga el fichero de entrada:
 void funcionAuxiliarEjercicio2 (list lista) {
 
 	int i = 0;
-	char mem[500];
-	int numero = 0;
-	list resultado = list_empty(int_type);
+	char mem[2000];
 
 	while (i < list_size(&lista)) {
 
 		list numeros = *(list*) list_get(&lista, i);
 
-		//resultado = ejercicio2recursivo(numeros);
-		//int suma = sumatorio(numeros);
+		smax resultado = ejercicio2Recursivo(numeros);
+		list subsecuencia = calculaSubsecuencia(resultado, lista);
 
 		printf("Lista de entrada: ");
 		printf("%s\n", list_tostring(&numeros, mem));
-		printf("Subsecuencia de suma mayor en intervalo: [%d,%d)\n", numero, numero);
-		printf("Subsecuencia: ");
-		printf("%s\n", list_tostring(&resultado, mem));
-		printf("Suma obtenida: ");
-		//printf("%d\n", suma);
-		printf("\n");
+		printf("Subsecuencia de suma mayor en intervalo: [%d,%d)\n", resultado.li, resultado.ls);
+		printf("Subsecuencia: %s\n", list_tostring(&subsecuencia, mem));
+		printf("Suma obtenida: %d\n", resultado.suma);
 		i++;
 
 	}
+
+}
+
+/*
+Funcion para calcular una sublista de la lista de entrada en base a los indices
+proporcionados por la tupla de entrada en sus valores 1 y 2:
+*/
+list calculaSubsecuencia (smax tupla, list lista) {
+
+	int i = tupla.li;
+	int j = tupla.ls;
+	list resultado = list_empty(int_type);
+
+	while (i <= j) {
+
+		int numero = *(int*) list_get(&lista, i);
+		list_add(&resultado, &numero);
+		i++;
+
+	}
+
+	return resultado;
 
 }

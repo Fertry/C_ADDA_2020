@@ -30,7 +30,6 @@ en base a tres casos bases y uno recursivo que se llama a si mismo tantas
 veces como sea necesario haciendo uso de memoria con un HashTable para evitar
 repetir operaciones y devuelve el resultado como Long:
 * Recursividad: 3 casos base y uno recursivo
-* Complejidad: ?????????????????????
 */
 double ejercicio3RecursivoConMemoriaInterno (int numero, hash_table * memoria) {
 
