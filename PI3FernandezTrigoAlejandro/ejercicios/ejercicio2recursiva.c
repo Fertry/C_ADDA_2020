@@ -85,6 +85,7 @@ smax calculaSecuenciaMitad(list lista, int i, int j, int k) {
 	int totalDerecha = *(int*) list_get(&lista, k);
 	int totalIzquierda = *(int*) list_get(&lista, k);
 
+	// Hacia la izquierda:
 	int indice1 = k - 1;
 	while (indice1 >= i) {
 
@@ -104,6 +105,7 @@ smax calculaSecuenciaMitad(list lista, int i, int j, int k) {
 	// Reseteo:
 	total = *(int*) list_get(&lista, k);
 
+	// Hacia la derecha:
 	int indice2 = k + 1;
 	while (indice2 < j) {
 
@@ -120,6 +122,7 @@ smax calculaSecuenciaMitad(list lista, int i, int j, int k) {
 
 	}
 
+	// Devuelvo la tupla con los indices y la suma:
 	return smax_of(maximoIzquierda, maximoDerecha, ((totalIzquierda + totalDerecha) - *(int*) list_get(&lista, k)));
 
 }

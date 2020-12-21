@@ -17,6 +17,6 @@
 #include "types/hash_table.h"
 
 // Cabeceras de las funciones:
-long ejercicio4Iterativo (int numeroA, int numeroB);
+int ejercicio4Iterativo (int numeroA, int numeroB);
 
 #endif /* EJERCICIOS_EJERCICIO4ITERATIVA_H_ */

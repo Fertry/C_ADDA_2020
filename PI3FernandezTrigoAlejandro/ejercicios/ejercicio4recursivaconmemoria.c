@@ -16,7 +16,6 @@
 Funcion que llame al ejercicio recursivo pasando como parametro
 el HashTable que se emplea como memoria para actuar de forma opaca al usuario:
 */
-
 int ejercicio4RecursivoConMemoria (int numeroA, int numeroB) {
 
 	// Empleamos pair_type para "encapsular" los dos numeros que se reciben como parametros:
@@ -30,9 +29,8 @@ int ejercicio4RecursivoConMemoria (int numeroA, int numeroB) {
 Funcion que dados dos enteros a, b, calcule la siguiente sucesion numerica en funcion
 de tres casos bases y uno recursivo que se llama a si mismo tantas veces como sea necesario
 haciendo uso de memoria con un HashTable para evitar repetir calculos y devuelve el
-resultado en forma de Long:
+resultado en forma de entero:
 * Recursividad: 3 casos base y uno recursivo
-* Complejidad: ????????????????????????
 */
 int ejercicio4RecursivoConMemoriaInterno (int numeroA, int numeroB, hash_table * memoria) {
 

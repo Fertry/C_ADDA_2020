@@ -13,13 +13,13 @@
 // ###################################################################################
 
 /*
- Funcion privada recursiva que se llama a si misma para reducir la matriz a la par que
- se comprueba si sus extremos siguen siendo distintos o no mediante el uso
- de HashSets para evitar emplear excesivos booleanos. Se llama tantas veces como sea
- necesario hasta que la matriz sea 2x2 o no se cumpla el requerimiento de que
- sus cuatro esquinas difieran:
- * Recursividad: 2 casos base + 1 caso recursivo multiple
- */
+Funcion privada recursiva que se llama a si misma para reducir la matriz a la par que
+se comprueba si sus extremos siguen siendo distintos o no mediante el uso
+de HashSets para evitar emplear excesivos booleanos. Se llama tantas veces como sea
+necesario hasta que la matriz sea 2x2 o no se cumpla el requerimiento de que
+sus cuatro esquinas difieran:
+* Recursividad: 2 casos base + 1 caso recursivo multiple
+*/
 bool ejercicio1RecursivoC(matrix matriz, int fila, int columna, int dimension) {
 
 	char mem[2000];
