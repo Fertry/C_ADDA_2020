@@ -7,6 +7,17 @@
 #ifndef EJERCICIOS_EJERCICIO3_H_
 #define EJERCICIOS_EJERCICIO3_H_
 
+// Librerias:
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "types/math2.h"
+#include "types/types.h"
+#include "types/list.h"
+#include "types/tree.h"
 
+// Cabeceras de las funciones:
+list leeDatosEjercicio3(char * fichero);
+void funcionAuxiliarEjercicio3(list listaArboles);
 
 #endif /* EJERCICIOS_EJERCICIO3_H_ */

@@ -7,6 +7,13 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-
+// Librerias:
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "types/math2.h"
+#include "types/types.h"
+#include "types/list.h"
+#include "types/tree.h"
 
 #endif /* MAIN_H_ */

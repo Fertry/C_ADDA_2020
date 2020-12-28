@@ -31,7 +31,7 @@ list leeDatosEjercicio3 (char * fichero) {
 
         miniLista = list_empty(int_type);
         char *fila = (char*) iterable_next(&lista);
-        iterator miniFila = split_iterable_pchar(fila, ",");
+        iterator miniFila = text_to_iterable_pchar(fila, ",");
 
         while (iterable_has_next(&miniFila)) {
 

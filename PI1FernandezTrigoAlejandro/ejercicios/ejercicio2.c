@@ -28,7 +28,7 @@ list leeDatosEjercicio2 (char * fichero) {
 	while (iterable_has_next(&filas)) {
 
 		char *fila = (char*) iterable_next(&filas);
-		split_text(fila, limite, tt);
+		pchar_split_text(fila, limite, tt);
 		int numero = int_parse_s(tt[1]);
 		list_add(&resultado, &numero);
 
