@@ -19,5 +19,6 @@
 // Cabeceras de las funciones:
 list leeDatosEjercicio2Arboles(char * fichero);
 list leeDatosEjercicio2Listas(char * fichero);
+void funcionAuxiliarEjercicio2(list listaArboles, list listaLetras);
 
 #endif /* EJERCICIOS_EJERCICIO2_H_ */
