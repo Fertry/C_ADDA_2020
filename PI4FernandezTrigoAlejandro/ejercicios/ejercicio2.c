@@ -13,7 +13,9 @@
 // ###################################################################################
 
 /*
-Funcion que lee...
+Funcion que lee el fichero de entrada que, por cada linea, representa un arbol binario
+de tipo string y, separado por un "#", una lista de caracteres. Empleamos dos funciones
+, una para leer los arboles (a la izquierda del "#") y otra para las listas:
 */
 list leeDatosEjercicio2Arboles(char * fichero) {
 
@@ -26,8 +28,12 @@ list leeDatosEjercicio2Arboles(char * fichero) {
 		char * a = (char*) iterable_next(&filas);
 		char b[] = "#";
 		char * c[200];
+
+		// Hacer split y parsear el arbol que queda a la
+		// izquierda del "#":
 		pchar_split_text(a, b, c);
 		binary_tree * arbol = binary_tree_parse(c[0], &memoria);
+
 		list_add(&listaArboles, arbol);
 
 	}
@@ -37,96 +43,83 @@ list leeDatosEjercicio2Arboles(char * fichero) {
 }
 
 /*
-Funcion que lee...
+Funcion que lee el fichero de entrada que, por cada linea, representa un arbol binario
+de tipo string y, separado por un "#", una lista de caracteres. Empleamos dos funciones
+, una para leer los arboles (a la izquierda del "#") y otra para las listas:
 */
 list leeDatosEjercicio2Listas(char * fichero) {
 
-	list listaFinal = list_empty(list_type);
-	iterator f = file_iterable_pchar(fichero);
-	while (iterable_has_next(&f)) {
-		char *s = (char*) iterable_next(&f);
-		char d[] = "#";
-		char *tt[80];
-		pchar_split_text(s, d, tt);
-		char *inicio[50];
-		char *fin[50];
+	list letras = list_empty(list_type);
+	iterator filas = file_iterable_pchar(fichero);
+
+	while (iterable_has_next(&filas)) {
+
+		char * a = (char*) iterable_next(&filas);
+		char b[] = "#";
+		char * c[80];
+
+		// Hacer split a partir del "#" y, con el contenido
+		// de la derecha (la lista), eliminar los caracteres
+		// "[, ]" y hacer split en base a la coma:
+		pchar_split_text(a, b, c);
+
+		char * izquierda[50];
+		char * derecha[50];
 		char p1[] = "[";
 		char p2[] = "]";
-		pchar_split_text(tt[1], p1, inicio);
-		pchar_split_text(inicio[0], p2, fin);
-		iterator f1 = text_to_iterable_pchar(fin[0], ",");
-		list listaCad = list_empty(pchar_type);
-		while (iterable_has_next(&f1)) {
-			char *letra = (char*) iterable_next(&f1);
-			list_add(&listaCad, letra);
+
+		pchar_split_text(c[1], p1, izquierda);
+		pchar_split_text(izquierda[0], p2, derecha);
+
+		list listaDeLetras = list_empty(pchar_type);
+		iterator fila = text_to_iterable_pchar(derecha[0], ",");
+
+		// Recorrer el nuevo iterador extrayendo cada letra separada
+		// y añadiendolas a la listaDeLetras que, por ultimo se añade
+		// a la lista resultante (lista de listas):
+		while (iterable_has_next(&fila)) {
+
+			char * letra = (char*) iterable_next(&fila);
+			list_add(&listaDeLetras, letra);
+
 		}
-		list_add(&listaFinal, &listaCad);
+
+		list_add(&letras, &listaDeLetras);
+
 	}
-	return listaFinal;
+
+	return letras;
 
 }
 
 /*
-Funcion que lee...
+Funcion auxiliar para recorrer las listas devueltas por las lecturas y, por cada par de listas (arbol y lista)
+mostrarlos por pantalla y pasarlos como parametros a la funcion que resuelve el ejercicio:
 */
-
-/*
 void funcionAuxiliarEjercicio2(list listaArboles, list listaLetras) {
 
 	int i = 0;
 	int j = 0;
-	char mem[500];
+	char mem1[500];
 	char mem2[500];
 
+	printf("\n");
 	while (i < listaArboles.size) {
 
 		while (j < listaLetras.size) {
 
+			list miniLista = *(list*) list_get(&listaLetras, i);
 			binary_tree * arbol = (binary_tree*) list_get(&listaArboles, i);
-			list miniLista = *(list*)list_get(&listaLetras, i);
-			printf("Arbol de entrada: %s", binary_tree_tostring(arbol, mem));
+
+			printf("Arbol de entrada: %s", binary_tree_tostring(arbol, mem1));
 			printf("Lista de entrada: %s", list_tostring(&miniLista, mem2));
-			printf("\n");
+			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			i++;
 			j++;
 
 		}
 
 	}
+	printf("\n");
 
 }
-*/
-
-/*
-	private static Boolean ejercicio2Privado(Tuple2<BinaryTree<String>, List<String>> conjunto) {
-
-		BinaryTree<String> arbol = conjunto.getV1();
-		List<String> lista = conjunto.getV2();
-
-		return ejercicio2(arbol, lista, 0);
-
-	}
-
-
-	private static Boolean ejercicio2(BinaryTree<String> arbol, List<String> lista, Integer i) {
-
-		if (arbol.isBinary()) {
-
-			return arbol.getLabel().equals(lista.get(i)) && (ejercicio2(arbol.getLeft(), lista, i +1) || ejercicio2(arbol.getRight(), lista, i + 1));
-
-		} else {
-
-			if (i == lista.size() - 1) {
-
-				return arbol.getLabel().equals(lista.get(i));
-
-			} else {
-
-				return false;
-
-			}
-
-		}
-
-	}
- */

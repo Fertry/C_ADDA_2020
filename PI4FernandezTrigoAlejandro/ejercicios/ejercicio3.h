@@ -19,5 +19,11 @@
 // Cabeceras de las funciones:
 list leeDatosEjercicio3(char * fichero);
 void funcionAuxiliarEjercicio3(list listaArboles);
+list ejercicioPredicadoPar(list arboles, int arbol);
+list ejercicioPredicadoPrimo(list arboles, int arbol);
+list funcionAuxiliarPredicadoPar(list arboles, list resultado, list nivel, list lista, int arbol, int i);
+list funcionAuxiliarPredicadoPrimo(list arboles, list resultado, list nivel, list lista, int arbol, int i);
+bool predicadoPar(list arboles, bool resultado, int i);
+bool predicadoPrimo(list arboles, bool resultado, int i);
 
 #endif /* EJERCICIOS_EJERCICIO3_H_ */

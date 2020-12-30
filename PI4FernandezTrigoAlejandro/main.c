@@ -17,8 +17,8 @@ int main() {
 
 	// Variables:
 	list lista1 = leeDatosEjercicio1("ficheros/PI4Ej1DatosEntrada.txt");
-	//list lista2A = leeDatosEjercicio2Arboles("ficheros/PI4Ej2DatosEntrada.txt");
-	list lista2B = leeDatosEjercicio2Listas("ficheros/PI4Ej2DatosEntrada.txt");
+	list lista2A = leeDatosEjercicio2Arboles("ficheros/PI4Ej2DatosEntrada.txt");
+	//list lista2B = leeDatosEjercicio2Listas("ficheros/PI4Ej2DatosEntrada.txt");
 	list lista3 = leeDatosEjercicio3("ficheros/PI4Ej3DatosEntrada.txt");
 	list lista4 = leeDatosEjercicio4("ficheros/PI4Ej4DatosEntrada.txt");
 	list lista5 = leeDatosEjercicio5("ficheros/PI4Ej5DatosEntrada.txt");
@@ -34,7 +34,7 @@ int main() {
 	printf("#######################################################################\n");
 	printf("######################### TEST EJERCICIO 2 ############################\n");
 	//funcionAuxiliarEjercicio2(lista2A, lista2B);
-	printf("Lista: %s", list_tostring(&lista2B, mem));
+	printf("Lista: %s", list_tostring(&lista2A, mem));
 	printf("#######################################################################\n");
 	printf("#######################################################################\n");
 	printf("\n");
@@ -58,6 +58,5 @@ int main() {
 	funcionAuxiliarEjercicio5(lista5);
 	printf("#######################################################################\n");
 	printf("#######################################################################\n");
-	printf("\n");
 
 }
