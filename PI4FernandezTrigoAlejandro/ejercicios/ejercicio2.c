@@ -111,9 +111,9 @@ void funcionAuxiliarEjercicio2(list listaArboles, list listaLetras) {
 			list miniLista = *(list*) list_get(&listaLetras, i);
 			binary_tree * arbol = (binary_tree*) list_get(&listaArboles, i);
 
-			printf("Arbol de entrada: %s", binary_tree_tostring(arbol, mem1));
-			printf("Lista de entrada: %s", list_tostring(&miniLista, mem2));
-			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			printf("Arbol de entrada: %s\n", binary_tree_tostring(arbol, mem1));
+			printf("Lista de entrada: %s\n", list_tostring(&miniLista, mem2));
+			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 			i++;
 			j++;
 

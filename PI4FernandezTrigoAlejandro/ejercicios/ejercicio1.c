@@ -51,9 +51,9 @@ void funcionAuxiliarEjercicio1(list listaArboles) {
 		binary_tree * arbol = (binary_tree*) list_get(&listaArboles, i);
 		bool res = ejercicio1(arbol);
 
-		printf("Arbol de entrada: %s", binary_tree_tostring(arbol, mem1));
-		printf("¿Cumple el predicado?: %s", bool_tostring(&res, mem2));
-		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		printf("Arbol de entrada: %s\n", binary_tree_tostring(arbol, mem1));
+		printf("¿Cumple el predicado?: %s\n", bool_tostring(&res, mem2));
+		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		i++;
 
 	}
@@ -64,6 +64,7 @@ void funcionAuxiliarEjercicio1(list listaArboles) {
 /*
 Funcion que...
 */
+/*
 bool esBinario(binary_tree * arbol) {
 
 	bool resultado = false;
@@ -78,6 +79,7 @@ bool esBinario(binary_tree * arbol) {
 	return resultado;
 
 }
+*/
 
 /*
 Funcion que dado un arbol binario suma las componentes de sus hijos

@@ -49,9 +49,9 @@ void funcionAuxiliarEjercicio5(list listaArboles) {
 
 		tree * arbol = list_get(&listaArboles, i);
 
-		printf("Arbol de entrada: %s", tree_tostring(arbol, mem));
-		printf("Hash table de salida: ");
-		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		printf("Arbol de entrada: %s\n", tree_tostring(arbol, mem));
+		printf("Hash table de salida: \n");
+		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		i++;
 
 	}
@@ -65,13 +65,16 @@ pasandole a esta como parametros la lista de arboles y el indice que indica el a
 a leer. Ademas, se le pasa como parametro un mapa de tipo int, set que corresponde
 al mapa a devolver:
 */
+
+/*
 hash_table ejercicio5Interno(list arboles, int arbol) {
 
 	hash_table resultado = hash_table_empty(int_type, set_type);
 
-	return ejercicio5(arboles, arbol, 0, 0, 0, resultado);
+	return ejercicio5(arboles, arbol, 0, 0, 0, &resultado);
 
 }
+*/
 
 /*
 Funcion que dado un arbol n-ario (lista de arboles e indice del arbol a leer),
@@ -80,44 +83,53 @@ del arbol y sus valores son un Set de arboles que contienen ese mismo nº de hijo
 Es decir, asociado a la clave 0, estaran los arboles cuyo nº de hijos sea 0,
 asociado a la clave 1, estaran los arboles cuyo nº de hijos sea 1, etc:
 */
+
+/*
 hash_table ejercicio5(
 		list arboles,
 		int arbol,
 		int i,
 		int j,
 		int k,
-		hash_table resultado) {
+		hash_table * resultado) {
 
 	// Altura del arbol:
-	if (j < list_get(&arboles, arbol).getHeight() + 1) {
+	int alturaDelArbol = *(int*) list_get(&arboles, arbol).getHeight();
+	if (j < alturaDelArbol + 1) {
 
 		// Anchura del arbol (nivel):
-		if (k < list_get(&arboles, arbol).getLevel(j).size) {
+		int anchuraDelArbol = *(int*) list_get(&arboles, arbol).getLevel(j).size;
+		if (k < anchuraDelArbol) {
 
 			// Conjunto vacio de tipo Tree:
-			Set<Tree<String>> conjunto = new HashSet<Tree<String>>();
+			set conjunto = set_empty(tree_type);
 
 			// Si el conjunto ya contiene la clave
-			if (resultado.containsKey(list_get(&arboles, arbol).getLevel(j).get(k).getNumOfChildren())) {
+			int numeroDeHijos = *(int*) list_get(&arboles, arbol).getLevel(j).get(k).getNumOfChildren();
+			if (hash_table_contains(resultado, &numeroDeHijos)) {
 
-				conjunto = resultado.get(list_get(&arboles, arbol).getLevel(j).get(k).getNumOfChildren());
+				// MAL! ESTO ES UN SET NO UN MAP!!
+				conjunto = hash_table_get(resultado, numeroDeHijos);
 
 				// Si el arbol NO es vacio:
-				if (!list_get(&arboles, arbol).getLevel(j).get(k).isEmpty()) {
+				tree arbolVacio = tree_empty(tree_type);
+				tree arbolDeNivelJ = list_get(&arboles, arbol).getLevel(j).get(k);
+				if (!tree_equals(arbolDeNivelJ, arbolVacio)) {
 
-					conjunto.add(arboles.get(arbol).getLevel(j).get(k));
+					// MAL! ESTO ES UN SET NO UN MAP!!
+					hash_table_put(conjunto, &numeroDeHijos, &arbolDeNivelJ);
 
-					// Si el arbol SI es vacio:
+				// Si el arbol SI es vacio:
 				} else {
 
-					conjunto.add(Tree.empty());
+					set_add(&conjunto, arbolVacio);
 
 				}
 
 				// Añadir al mapa resultado la clave (nº hijos) + el set de arboles:
-				resultado.put(arboles.get(arbol).getLevel(j).get(k).getNumOfChildren(), conjunto);
+				hash_table_put(resultado, &numeroDeHijos, &conjunto);
 
-				// Si el conjunto no contiene la clave:
+			// Si el conjunto no contiene la clave:
 			} else {
 
 				// Si el arbol NO es vacio:
@@ -125,10 +137,11 @@ hash_table ejercicio5(
 
 					conjunto.add(arboles.get(arbol).getLevel(j).get(k));
 
-					// Si el arbol SI es vacio:
+				// Si el arbol SI es vacio:
 				} else {
 
-					conjunto.add(Tree.empty());
+					tree arbolVacio = tree_empty(tree_type);
+					set_add(&conjunto, arbolVacio);
 
 				}
 
@@ -138,7 +151,7 @@ hash_table ejercicio5(
 			}
 
 			// Vaciar el set:
-			conjunto = new HashSet<Tree<String>>();
+			conjunto = set_empty(tree_type);
 
 			// Recursion:
 			resultado = ejercicio5(arboles, arbol, i, j, k + 1, resultado);
@@ -158,4 +171,32 @@ hash_table ejercicio5(
 	return resultado;
 
 }
+*/
 
+/*
+Funcion auxiliar para calcular el nivel de un arbol
+dado como parametro el arbol y la lista correspondiente
+al nivel 0 del arbol:
+*/
+/*
+list calculaNivelArbol(tree * arbol, list nivelCero) {
+
+	int size = list_size(&nivelCero);
+	list resultado = list_empty(tree_type);
+
+	for (int j = 0; j < size; j++) {
+
+		int numeroHijos = tree_child_number(arbol);
+
+		for (int hijo = 0; hijo < numeroHijos; hijo++) {
+
+			list_add(&resultado, tree_get_child(arbol, hijo));
+
+		}
+
+	}
+
+	return resultado;
+
+}
+*/

@@ -44,36 +44,36 @@ resuelve el ejercicio:
 void funcionAuxiliarEjercicio3(list listaArboles) {
 
 	char mem1[500];
-	char mem2[500];
+	//char mem2[500];
 	char mem3[500];
-	char mem4[500];
+	//char mem4[500];
 
 	int i = 0;
 	printf("\n");
-	printf("============================= Predicado par =============================");
+	printf("=========================== Predicado par ===========================");
 	while (i < listaArboles.size) {
 
 		tree * arbol = list_get(&listaArboles, i);
-		bool resultadoPar = ejercicioPredicadoPar(listaArboles, i);
+		//list resultadoPar = ejercicioPredicadoPar(listaArboles, i);
 
-		printf("Arbol de entrada: %s", tree_tostring(arbol, mem1));
-		printf("¿Cumple el predicado? ", bool_tostring(resultadoPar, mem2));
-		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		printf("Arbol de entrada: %s\n", tree_tostring(arbol, mem1));
+		//printf("¿Cumple el predicado? %s\n", list_tostring(&resultadoPar, mem2));
+		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		i++;
 
 	}
 	printf("\n");
 
 	int j = 0;
-	printf("============================ Predicado primo ============================");
+	printf("========================== Predicado primo ==========================");
 	while (i < listaArboles.size) {
 
 		tree * arbol = list_get(&listaArboles, j);
-		bool resultadoPrimo = ejercicioPredicadoPrimo(listaArboles, j);
+		//list resultadoPrimo = ejercicioPredicadoPrimo(listaArboles, j);
 
-		printf("Arbol de entrada: %s", tree_tostring(arbol, mem3));
-		printf("¿Cumple el predicado? ", bool_tostring(resultadoPrimo, mem4));
-		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		printf("Arbol de entrada: %s\n", tree_tostring(arbol, mem3));
+		//printf("¿Cumple el predicado? %s\n", list_tostring(&resultadoPrimo, mem4));
+		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		j++;
 
 	}
@@ -86,6 +86,7 @@ Llamada opaca al usuario de la comprobacion del predicado par para una lista de 
 dado dicha lista y el indice que corresponde al arbol que hay que leer, se le pasan la
 lista resultante y dos listas auxiliares:
 */
+/*
 list ejercicioPredicadoPar(list arboles, int arbol) {
 
 	list niveles = list_empty(tree_type);
@@ -95,12 +96,14 @@ list ejercicioPredicadoPar(list arboles, int arbol) {
 	return funcionAuxiliarPredicadoPar(arboles, resultado, niveles, booleanos, arbol, 0);
 
 }
+*/
 
 /*
 Llamada opaca al usuario de la comprobacion del predicado primo para una lista de arboles,
 dado dicha lista y el indice que corresponde al arbol que hay que leer, se le pasan la
 lista resultante y dos listas auxiliares:
 */
+/*
 list ejercicioPredicadoPrimo(list arboles, int arbol) {
 
 	list niveles = list_empty(tree_type);
@@ -110,6 +113,7 @@ list ejercicioPredicadoPrimo(list arboles, int arbol) {
 	return funcionAuxiliarPredicadoPrimo(arboles, resultado, niveles, booleanos, arbol, 0);
 
 }
+*/
 
 /*
 Funcion que dado la lista de arboles, las listas auxiliares y el indice correspondiente al
@@ -118,6 +122,7 @@ predicado esPar en ese nivel y devuelve una lista de tantos elementos como nivel
 el arbol con valores booleanos correspondientes a la verificacion o no del predicado en ese
 nivel. Para ello hace uso de una funcion auxiliar llamada predicadoPar():
 */
+/*
 list funcionAuxiliarPredicadoPar(
 		list arboles,
 		list resultado,
@@ -126,10 +131,13 @@ list funcionAuxiliarPredicadoPar(
 		int arbol,
 		int i) {
 
-	if (i < list_get(&arboles, arbol).getHeight() + 1) {
+	tree * arbolito = list_get(&arboles, arbol);
+	lista = tree_to_list(arbolito);
+
+	if (i < lista.size + 1) {
 
 		// Obtener el nivel:
-		nivel = list_get(&arboles, arbol).getLevel(i);
+		nivel = calculaNivelArbol(arbolito, lista);
 
 		// Añadir a la lista el booleano correspondiente a la
 		// llamada de la funcion que comprueba el predicado:
@@ -144,6 +152,7 @@ list funcionAuxiliarPredicadoPar(
 	return resultado;
 
 }
+*/
 
 /*
 Funcion que dado la lista de arboles, las listas auxiliares y el indice correspondiente al
@@ -152,6 +161,7 @@ predicado esPrimo en ese nivel y devuelve una lista de tantos elementos como niv
 el arbol con valores booleanos correspondientes a la verificacion o no del predicado en ese
 nivel. Para ello hace uso de una funcion auxiliar llamada predicadoPrimo():
 */
+/*
 list funcionAuxiliarPredicadoPrimo(
 		list arboles,
 		list resultado,
@@ -160,10 +170,13 @@ list funcionAuxiliarPredicadoPrimo(
 		int arbol,
 		int i) {
 
-	if (i < list_get(&arboles, arbol).getHeight() + 1) {
+	tree * arbolito = list_get(&arboles, arbol);
+	lista = tree_to_list(arbolito);
+
+	if (i < lista.size + 1) {
 
 		// Obtener el nivel:
-		nivel = list_get(&arboles, arbol).getLevel(i);
+		nivel = calculaNivelArbol(arbolito, lista);
 
 		// Añadir a la lista el booleano correspondiente a la
 		// llamada de la funcion que comprueba el predicado:
@@ -178,6 +191,7 @@ list funcionAuxiliarPredicadoPrimo(
 	return resultado;
 
 }
+*/
 
 // Predicado 1: predicado sobre enteros que devuelve cierto cuando el entero es par.
 /*
@@ -192,11 +206,14 @@ bool predicadoPar(
 
 	if (i < arboles.size) {
 
-		if (!list_get(&arboles, i).isEmpty()) {
+		tree * arbol = list_get(&arboles, i);
+		memory_heap memoria = memory_heap_create();
+		tree * arbolVacio = tree_empty(&memoria);
+		if (!tree_equals(arbol, arbolVacio)) {
 
-			tree arbol = list_get(&arboles, i);
+			tree * arbol = list_get(&arboles, i);
 			int label = *(int*) tree_label(arbol);
-			resultado = resultado && esPar(label);
+			resultado = resultado && es_par(label);
 
 		}
 
@@ -225,13 +242,15 @@ bool predicadoPrimo(
 		bool resultado,
 		int i) {
 
-	if (i < arboles.size()) {
+	if (i < arboles.size) {
 
-		if (!list_get(&arboles, i).isEmpty()) {
+		tree * arbol = list_get(&arboles, i);
+		memory_heap memoria = memory_heap_create();
+		tree * arbolVacio = tree_empty(&memoria);
+		if (!tree_equals(arbol, arbolVacio)) {
 
-			tree arbol = list_get(&arboles, i);
 			int label = *(int*) tree_label(arbol);
-			resultado = resultado && esPrimo(label);
+			resultado = resultado && es_primo(label);
 
 		}
 
@@ -248,3 +267,31 @@ bool predicadoPrimo(
 	return resultado;
 
 }
+
+/*
+Funcion auxiliar para calcular el nivel de un arbol
+dado como parametro el arbol y la lista correspondiente
+al nivel 0 del arbol:
+*/
+/*
+list calculaNivelArbol(tree * arbol, list nivelCero) {
+
+	int size = list_size(&nivelCero);
+	list resultado = list_empty(tree_type);
+
+	for (int j = 0; j < size; j++) {
+
+		int numeroHijos = tree_child_number(arbol);
+
+		for (int hijo = 0; hijo < numeroHijos; hijo++) {
+
+			list_add(&resultado, tree_get_child(arbol, hijo));
+
+		}
+
+	}
+
+	return resultado;
+
+}
+*/
