@@ -13,12 +13,11 @@
 
 int main() {
 
-	//char mem[500];
-
 	// Variables:
 	list lista1 = leeDatosEjercicio1("ficheros/PI4Ej1DatosEntrada.txt");
-	//list lista2A = leeDatosEjercicio2Arboles("ficheros/PI4Ej2DatosEntrada.txt");
-	//list lista2B = leeDatosEjercicio2Listas("ficheros/PI4Ej2DatosEntrada.txt");
+	list lista2 = leeDatosEjercicio2Listas("ficheros/PI4Ej2DatosEntrada.txt");
+	list miniListaArboles = *(list*) list_get(&lista2, 0);
+	list miniListaLetras = *(list*) list_get(&lista2, 1);
 	list lista3 = leeDatosEjercicio3("ficheros/PI4Ej3DatosEntrada.txt");
 	list lista4 = leeDatosEjercicio4("ficheros/PI4Ej4DatosEntrada.txt");
 	list lista5 = leeDatosEjercicio5("ficheros/PI4Ej5DatosEntrada.txt");
@@ -33,8 +32,7 @@ int main() {
 
 	printf("#######################################################################\n");
 	printf("######################### TEST EJERCICIO 2 ############################\n");
-	//funcionAuxiliarEjercicio2(lista2A, lista2B);
-	//printf("Lista: %s", list_tostring(&lista2A, mem));
+	funcionAuxiliarEjercicio2(miniListaArboles, miniListaLetras);
 	printf("#######################################################################\n");
 	printf("#######################################################################\n");
 	printf("\n");

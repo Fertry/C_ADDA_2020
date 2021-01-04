@@ -5,6 +5,7 @@
  */
 
 #include "ejercicio4.h"
+#include "funcionesAuxiliares.h"
 
 // ###################################################################################
 // ###################################################################################
@@ -19,13 +20,16 @@ de tipo generico que se parsea y añade a la lista resultante:
 list leeDatosEjercicio4(char * fichero) {
 
 	list listaArboles = list_empty(tree_type);
-	memory_heap memoria = memory_heap_create();
+	memory_heap memoria1 = memory_heap_create();
+	memory_heap memoria2 = memory_heap_create();
 	iterator filas = file_iterable_pchar(fichero);
 
 	while (iterable_has_next(&filas)) {
 
 		char * linea = (char*) iterable_next(&filas);
-		tree * arbol = tree_parse(linea, &memoria);
+		// Descomentar para pasar a string
+		// tree * arbol = tree_parse(linea, &memoria);
+		tree * arbol = tree_map(tree_parse(linea, &memoria1), int_type, castearArbol, &memoria2);
 		list_add(&listaArboles, arbol);
 
 	}
@@ -42,15 +46,17 @@ la lista y el indice correspondiente al arbol a leer:
 void funcionAuxiliarEjercicio4(list listaArboles) {
 
 	int i = 0;
-	char mem[500];
+	char mem1[500];
+	char mem2[500];
 
 	printf("\n");
 	while (i < listaArboles.size) {
 
 		tree * arbol = list_get(&listaArboles, i);
+		hash_table resultado = ejercicio4Interno(listaArboles, i);
 
-		printf("Arbol de entrada: %s\n", tree_tostring(arbol, mem));
-		printf("Hash table de salida: \n");
+		printf("Arbol de entrada: %s\n", tree_tostring(arbol, mem1));
+		printf("Hash table de salida: %s\n", hash_table_tostring(&resultado, mem2));
 		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		i++;
 
@@ -64,15 +70,13 @@ Funcion que llama de forma opaca al usuario a la funcion que resuelve el ejercic
 pasandole a esta como parametros la lista de arboles y el indice que indica el arbol
 a leer:
 */
-/*
 hash_table ejercicio4Interno(list arboles, int arbol) {
 
-	hash_table mapa = hash_table_empty(int_pair_type, list_type);
+	hash_table mapa = hash_table_empty(int_type, list_type);
 
-	return ejercicio4(arboles, mapa, arbol, 0);
+	return * ejercicio4(arboles, &mapa, arbol, 0);
 
 }
-*/
 
 /*
 Funcion que dado la lista de arboles, el mapa resultante de tipo entero y lista de string
@@ -81,36 +85,44 @@ del arbol y sus valores son listas de nodos del mismo nivel que tiene un nº par 
 Para ello se emplea la funcion auxiliar predicado() que comprueba la validez del predicado
 (nodo binario) para cada nivel dado:
 */
-/*
-hash_table ejercicio4(
+hash_table * ejercicio4(
 		list arboles,
-		hash_table resultado,
+		hash_table * resultado,
 		int arbol,
 		int i) {
 
 	// Recursion:
 	tree * arbolito = list_get(&arboles, arbol);
-	list lista = tree_to_list(arbolito);
+	int altura = calculaAlturaArbol(arbolito);
 
-	if (i < lista.size + 1) {
+	if (i < altura) {
 
 		// Lista a añadir como valor del mapa para la clave i:
-		list lista = list_empty(string_type);
+		list lista = list_empty(int_type);
 
 		// Llamada a la funcion auxiliar predicado() con el nivel:
-		list listaAuxiliar = list_empty(string_type);
-		list nivel = calculaNivelArbol(arbolito, lista);
+		list listaAuxiliar = list_empty(int_type);
+		list nivel = calculaNivelArbol(arbolito, i);
 		list listaPredicado = predicado(nivel, listaAuxiliar, 0);
-		list_add(&lista, &listaPredicado);
+
+		// Añadir los elementos de la lista de salida de predicado()
+		// a la lista resultante que se añade luego al hash_table:
+		for (int j = 0; j < listaPredicado.size; j++) {
+
+			int numero = *(int*) list_get(&listaPredicado, j);
+			list_add(&lista, &numero);
+
+		}
 
 		// Añadir al mapa la clave con su valor:
-		hash_table_put(&resultado, &i, &lista);
+		hash_table_put(resultado, &i, &lista);
 
 		// Vaciar la lista:
-		lista = list_empty(string_type);
+		lista = list_empty(int_type);
 
 		// Llamada recursiva al ejercicio incrementando el nivel:
-		resultado = ejercicio4(arboles, resultado, arbol, i + 1);
+		int indice = i + 1;
+		resultado = ejercicio4(arboles, resultado, arbol, indice);
 
 	// Caso base:
 	} else {
@@ -121,7 +133,6 @@ hash_table ejercicio4(
 	return resultado;
 
 }
-*/
 
 /*
 Funcion auxiliar que dado una lista de entrada representando a un nivel
@@ -133,7 +144,6 @@ verifica, procedemos a añadir el valor de su etiquita (label) a la lista
 y llamamos recursivamente a la funcion para leer el siguente elemento
 del nivel si lo hay:
 */
-/*
 list predicado(
 		list listaEntrada,
 		list listaSalida,
@@ -143,8 +153,9 @@ list predicado(
 
 		// Caso base:
 		tree * arbol = list_get(&listaEntrada, i);
-		tree * arbolVacio = tree_empty(tree_type);
-		if (!tree_equals(arbol, arbolVacio) && arbol.num_children != 0 && esPar(arbol.num_children)) {
+		int numeroHijos = arbol->num_children;
+
+		if ((arbol->tree_type != Empty_Tree) && numeroHijos != 0 && es_par(numeroHijos)) {
 
 			// Añadir a la lista:
 			int label = *(int*) tree_label(arbol);
@@ -153,7 +164,8 @@ list predicado(
 		}
 
 		// Recursion:
-		listaSalida = predicado(listaEntrada, listaSalida, i + 1);
+		int indice = i + 1;
+		listaSalida = predicado(listaEntrada, listaSalida, indice);
 
 	// Caso base:
 	} else {
@@ -164,32 +176,3 @@ list predicado(
 	return listaSalida;
 
 }
-*/
-
-/*
-Funcion auxiliar para calcular el nivel de un arbol
-dado como parametro el arbol y la lista correspondiente
-al nivel 0 del arbol:
-*/
-/*
-list calculaNivelArbol(tree * arbol, list nivelCero) {
-
-	int size = list_size(&nivelCero);
-	list resultado = list_empty(tree_type);
-
-	for (int j = 0; j < size; j++) {
-
-		int numeroHijos = tree_child_number(arbol);
-
-		for (int hijo = 0; hijo < numeroHijos; hijo++) {
-
-			list_add(&resultado, tree_get_child(arbol, hijo));
-
-		}
-
-	}
-
-	return resultado;
-
-}
-*/

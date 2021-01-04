@@ -62,26 +62,6 @@ void funcionAuxiliarEjercicio1(list listaArboles) {
 }
 
 /*
-Funcion que...
-*/
-/*
-bool esBinario(binary_tree * arbol) {
-
-	bool resultado = false;
-	int tam = binary_tree_size(arbol);
-
-	if (tam >= 3) {
-
-		resultado = true;
-
-	}
-
-	return resultado;
-
-}
-*/
-
-/*
 Funcion que dado un arbol binario suma las componentes de sus hijos
 y devuelve como booleano el resultado, siendo este true cuando la suma
 de sus valores sea igual a la del padre y false en caso contrario. Para
@@ -91,13 +71,19 @@ bool ejercicio1(binary_tree * arbol) {
 
 	if (arbol->tree_type == Binary_Tree) {
 
-		int label = *(int*) binary_tree_label(arbol);
+		// Obtener el valor de las etiquetas de los nodos:
+		char * label = (char*) binary_tree_label(arbol);
 		binary_tree * arbolIzquierdo = binary_tree_left(arbol);
-		int izquierda = *(int*) binary_tree_label(arbolIzquierdo);
+		char * izquierda = (char*) binary_tree_label(arbolIzquierdo);
 		binary_tree * arbolDerecho = binary_tree_right(arbol);
-		int derecha = *(int*) binary_tree_label(arbolDerecho);
+		char * derecha = (char*) binary_tree_label(arbolDerecho);
 
-		bool iguales = (izquierda + derecha) == label;
+		// Castear los char a enteros para operar:
+		int labelEntero = int_parse_s(label);
+		int izquierdaEntero = int_parse_s(izquierda);
+		int derechaEntero = int_parse_s(derecha);
+
+		bool iguales = (izquierdaEntero + derechaEntero) == labelEntero;
 
 		return iguales && ejercicio1(arbolIzquierdo) && ejercicio1(arbolDerecho);
 

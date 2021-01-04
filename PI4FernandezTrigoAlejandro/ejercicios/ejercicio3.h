@@ -25,6 +25,5 @@ list funcionAuxiliarPredicadoPar(list arboles, list resultado, list nivel, list 
 list funcionAuxiliarPredicadoPrimo(list arboles, list resultado, list nivel, list lista, int arbol, int i);
 bool predicadoPar(list arboles, bool resultado, int i);
 bool predicadoPrimo(list arboles, bool resultado, int i);
-//list calculaNivelArbol(tree * arbol, list nivelCero);
 
 #endif /* EJERCICIOS_EJERCICIO3_H_ */

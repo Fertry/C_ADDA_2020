@@ -20,5 +20,7 @@
 list leeDatosEjercicio2Arboles(char * fichero);
 list leeDatosEjercicio2Listas(char * fichero);
 void funcionAuxiliarEjercicio2(list listaArboles, list listaLetras);
+bool ejercicio2Interno(binary_tree * arbol, list lista);
+bool ejercicio2(binary_tree * arbol, list lista, int i);
 
 #endif /* EJERCICIOS_EJERCICIO2_H_ */

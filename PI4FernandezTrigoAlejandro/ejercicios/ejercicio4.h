@@ -21,8 +21,7 @@
 list leeDatosEjercicio4(char * fichero);
 void funcionAuxiliarEjercicio4(list listaArboles);
 hash_table ejercicio4Interno(list arboles, int arbol);
-hash_table ejercicio4(list arboles, hash_table resultado, int arbol, int i);
+hash_table * ejercicio4(list arboles, hash_table * resultado, int arbol, int i);
 list predicado(list listaEntrada, list listaSalida, int i);
-//list calculaNivelArbol(tree * arbol, list nivelCero);
 
 #endif /* EJERCICIOS_EJERCICIO4_H_ */

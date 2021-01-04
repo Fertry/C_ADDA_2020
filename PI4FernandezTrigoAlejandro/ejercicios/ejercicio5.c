@@ -4,7 +4,8 @@
  *      Practica Individual 4
  */
 
-#include "ejercicio4.h"
+#include "ejercicio5.h"
+#include "funcionesAuxiliares.h"
 
 // ###################################################################################
 // ###################################################################################
@@ -25,7 +26,9 @@ list leeDatosEjercicio5(char * fichero) {
 	while (iterable_has_next(&filas)) {
 
 		char * linea = (char*) iterable_next(&filas);
-		tree * arbol = tree_parse(linea, &memoria);
+		// Descomentar para pasar a string
+		// tree * arbol = tree_parse(linea, &memoria);
+		tree * arbol = tree_map(tree_parse(linea, &memoria), int_type, castearArbol, &memoria);
 		list_add(&listaArboles, arbol);
 
 	}
@@ -42,15 +45,17 @@ la lista y el indice correspondiente al arbol a leer:
 void funcionAuxiliarEjercicio5(list listaArboles) {
 
 	int i = 0;
-	char mem[500];
+	char mem1[500];
+	//char mem2[500];
 
 	printf("\n");
 	while (i < listaArboles.size) {
 
 		tree * arbol = list_get(&listaArboles, i);
+		//hash_table resultado = ejercicio5Interno(listaArboles, i);
 
-		printf("Arbol de entrada: %s\n", tree_tostring(arbol, mem));
-		printf("Hash table de salida: \n");
+		printf("Arbol de entrada: %s\n", tree_tostring(arbol, mem1));
+		//printf("Hash table de salida: %s\n", hash_table_tostring(&resultado, mem2));
 		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		i++;
 
@@ -65,16 +70,13 @@ pasandole a esta como parametros la lista de arboles y el indice que indica el a
 a leer. Ademas, se le pasa como parametro un mapa de tipo int, set que corresponde
 al mapa a devolver:
 */
-
-/*
 hash_table ejercicio5Interno(list arboles, int arbol) {
 
 	hash_table resultado = hash_table_empty(int_type, set_type);
 
-	return ejercicio5(arboles, arbol, 0, 0, 0, &resultado);
+	return * ejercicio5(arboles, arbol, 0, 0, &resultado);
 
 }
-*/
 
 /*
 Funcion que dado un arbol n-ario (lista de arboles e indice del arbol a leer),
@@ -83,45 +85,48 @@ del arbol y sus valores son un Set de arboles que contienen ese mismo nº de hijo
 Es decir, asociado a la clave 0, estaran los arboles cuyo nº de hijos sea 0,
 asociado a la clave 1, estaran los arboles cuyo nº de hijos sea 1, etc:
 */
-
-/*
-hash_table ejercicio5(
+hash_table * ejercicio5(
 		list arboles,
 		int arbol,
 		int i,
 		int j,
-		int k,
 		hash_table * resultado) {
 
-	// Altura del arbol:
-	int alturaDelArbol = *(int*) list_get(&arboles, arbol).getHeight();
-	if (j < alturaDelArbol + 1) {
+	// Obtener el arbol:
+	tree * arbolito = list_get(&arboles, arbol);
 
-		// Anchura del arbol (nivel):
-		int anchuraDelArbol = *(int*) list_get(&arboles, arbol).getLevel(j).size;
-		if (k < anchuraDelArbol) {
+	// Altura del arbol:
+	int altura = calculaAlturaArbol(arbolito);
+
+	// Anchura del arbol (nivel) y nº de hijos:
+	list nivel = calculaNivelArbol(arbolito, i);
+	tree * arbolDeNivelJ = list_get(&nivel, j);
+	int numeroDeHijos = tree_child_number(arbolDeNivelJ);
+
+	// Altura:
+	if (i < altura) {
+
+		// Anchura:
+		if (j < nivel.size) {
 
 			// Conjunto vacio de tipo Tree:
 			set conjunto = set_empty(tree_type);
 
-			// Si el conjunto ya contiene la clave
-			int numeroDeHijos = *(int*) list_get(&arboles, arbol).getLevel(j).get(k).getNumOfChildren();
+			// Si el conjunto ya contiene la clave:
 			if (hash_table_contains(resultado, &numeroDeHijos)) {
 
-				// MAL! ESTO ES UN SET NO UN MAP!!
-				conjunto = hash_table_get(resultado, numeroDeHijos);
+				conjunto = *(set*) hash_table_get(resultado, &numeroDeHijos);
 
 				// Si el arbol NO es vacio:
-				tree arbolVacio = tree_empty(tree_type);
-				tree arbolDeNivelJ = list_get(&arboles, arbol).getLevel(j).get(k);
-				if (!tree_equals(arbolDeNivelJ, arbolVacio)) {
+				if (arbolDeNivelJ->tree_type != Empty_Tree) {
 
-					// MAL! ESTO ES UN SET NO UN MAP!!
-					hash_table_put(conjunto, &numeroDeHijos, &arbolDeNivelJ);
+					set_add(&conjunto, arbolDeNivelJ);
 
 				// Si el arbol SI es vacio:
 				} else {
 
+					memory_heap memoria1 = memory_heap_create();
+					tree * arbolVacio = tree_empty(&memoria1);
 					set_add(&conjunto, arbolVacio);
 
 				}
@@ -133,20 +138,21 @@ hash_table ejercicio5(
 			} else {
 
 				// Si el arbol NO es vacio:
-				if (!list_get(&arboles, arbol).getLevel(j).get(k).isEmpty()) {
+				if (arbolDeNivelJ->tree_type != Empty_Tree) {
 
-					conjunto.add(arboles.get(arbol).getLevel(j).get(k));
+					set_add(&conjunto, arbolDeNivelJ);
 
 				// Si el arbol SI es vacio:
 				} else {
 
-					tree arbolVacio = tree_empty(tree_type);
+					memory_heap memoria2 = memory_heap_create();
+					tree * arbolVacio = tree_empty(&memoria2);
 					set_add(&conjunto, arbolVacio);
 
 				}
 
 				// Añadir al mapa resultado la clave (nº hijos) + el set de arboles:
-				resultado.put(list_get(&arboles, arbol).getLevel(j).get(k).getNumOfChildren(), conjunto);
+				hash_table_put(resultado, &numeroDeHijos, &conjunto);
 
 			}
 
@@ -154,12 +160,14 @@ hash_table ejercicio5(
 			conjunto = set_empty(tree_type);
 
 			// Recursion:
-			resultado = ejercicio5(arboles, arbol, i, j, k + 1, resultado);
+			int indice = j + 1;
+			resultado = ejercicio5(arboles, arbol, i, indice, resultado);
 
 		}
 
 		// Recursion:
-		resultado = ejercicio5(arboles, arbol, i, j + 1, k, resultado);
+		int indice = i + 1;
+		resultado = ejercicio5(arboles, arbol, indice, j, resultado);
 
 	// Caso base: si no entramos en el if, se devuelve el set vacio:
 	} else {
@@ -171,32 +179,3 @@ hash_table ejercicio5(
 	return resultado;
 
 }
-*/
-
-/*
-Funcion auxiliar para calcular el nivel de un arbol
-dado como parametro el arbol y la lista correspondiente
-al nivel 0 del arbol:
-*/
-/*
-list calculaNivelArbol(tree * arbol, list nivelCero) {
-
-	int size = list_size(&nivelCero);
-	list resultado = list_empty(tree_type);
-
-	for (int j = 0; j < size; j++) {
-
-		int numeroHijos = tree_child_number(arbol);
-
-		for (int hijo = 0; hijo < numeroHijos; hijo++) {
-
-			list_add(&resultado, tree_get_child(arbol, hijo));
-
-		}
-
-	}
-
-	return resultado;
-
-}
-*/
