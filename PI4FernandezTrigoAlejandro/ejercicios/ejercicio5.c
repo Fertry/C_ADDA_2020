@@ -46,20 +46,22 @@ void funcionAuxiliarEjercicio5(list listaArboles) {
 
 	int i = 0;
 	char mem1[500];
-	//char mem2[500];
+	char mem2[500];
 
 	printf("\n");
-	while (i < listaArboles.size) {
+	// ATENCION: Por problemas de memoria de C, no puedo mostrar todos los arboles
+	// por eso el bucle while esta comentado y solo muestra el primero!!!!
+	//while (i < listaArboles.size) {
 
 		tree * arbol = list_get(&listaArboles, i);
-		//hash_table resultado = ejercicio5Interno(listaArboles, i);
+		hash_table resultado = ejercicio5Interno(listaArboles, i);
 
 		printf("Arbol de entrada: %s\n", tree_tostring(arbol, mem1));
-		//printf("Hash table de salida: %s\n", hash_table_tostring(&resultado, mem2));
+		printf("Hash table de salida: %s\n", hash_table_tostring(&resultado, mem2));
 		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-		i++;
+		//i++;
 
-	}
+	//}
 	printf("\n");
 
 }
@@ -85,12 +87,7 @@ del arbol y sus valores son un Set de arboles que contienen ese mismo nº de hijo
 Es decir, asociado a la clave 0, estaran los arboles cuyo nº de hijos sea 0,
 asociado a la clave 1, estaran los arboles cuyo nº de hijos sea 1, etc:
 */
-hash_table * ejercicio5(
-		list arboles,
-		int arbol,
-		int i,
-		int j,
-		hash_table * resultado) {
+hash_table * ejercicio5(list arboles, int arbol, int i, int j, hash_table * resultado) {
 
 	// Obtener el arbol:
 	tree * arbolito = list_get(&arboles, arbol);
@@ -98,74 +95,51 @@ hash_table * ejercicio5(
 	// Altura del arbol:
 	int altura = calculaAlturaArbol(arbolito);
 
-	// Anchura del arbol (nivel) y nº de hijos:
+	// Anchura del arbol (nivel):
 	list nivel = calculaNivelArbol(arbolito, i);
-	tree * arbolDeNivelJ = list_get(&nivel, j);
-	int numeroDeHijos = tree_child_number(arbolDeNivelJ);
 
-	// Altura:
 	if (i < altura) {
 
-		// Anchura:
 		if (j < nivel.size) {
 
 			// Conjunto vacio de tipo Tree:
 			set conjunto = set_empty(tree_type);
 
+			// Nº de hijos del arbol:
+			tree * arbolDeNivelJ = list_get(&nivel, j);
+			int numeroHijos = arbolDeNivelJ->num_children;
+
 			// Si el conjunto ya contiene la clave:
-			if (hash_table_contains(resultado, &numeroDeHijos)) {
+			if (hash_table_contains(resultado, &numeroHijos)) {
 
-				conjunto = *(set*) hash_table_get(resultado, &numeroDeHijos);
+				// Añadir el arbol al conjunto:
+				conjunto = *(set*) hash_table_get(resultado, &numeroHijos);
+				set_add(&conjunto, arbolDeNivelJ);
 
-				// Si el arbol NO es vacio:
-				if (arbolDeNivelJ->tree_type != Empty_Tree) {
-
-					set_add(&conjunto, arbolDeNivelJ);
-
-				// Si el arbol SI es vacio:
-				} else {
-
-					memory_heap memoria1 = memory_heap_create();
-					tree * arbolVacio = tree_empty(&memoria1);
-					set_add(&conjunto, arbolVacio);
-
-				}
-
-				// Añadir al mapa resultado la clave (nº hijos) + el set de arboles:
-				hash_table_put(resultado, &numeroDeHijos, &conjunto);
-
-			// Si el conjunto no contiene la clave:
+		    // Si el conjunto no contiene la clave:
 			} else {
 
-				// Si el arbol NO es vacio:
-				if (arbolDeNivelJ->tree_type != Empty_Tree) {
-
-					set_add(&conjunto, arbolDeNivelJ);
-
-				// Si el arbol SI es vacio:
-				} else {
-
-					memory_heap memoria2 = memory_heap_create();
-					tree * arbolVacio = tree_empty(&memoria2);
-					set_add(&conjunto, arbolVacio);
-
-				}
-
-				// Añadir al mapa resultado la clave (nº hijos) + el set de arboles:
-				hash_table_put(resultado, &numeroDeHijos, &conjunto);
+				// Añadir el arbol al conjunto:
+				set_add(&conjunto, arbolDeNivelJ);
 
 			}
+
+			// Añadir al hash_table resultado la clave (nº hijos) + el set de arboles:
+			hash_table_put(resultado, &numeroHijos, &conjunto);
 
 			// Vaciar el set:
 			conjunto = set_empty(tree_type);
 
-			// Recursion:
+			// Recursion: siguiente nivel:
 			int indice = j + 1;
 			resultado = ejercicio5(arboles, arbol, i, indice, resultado);
 
 		}
 
-		// Recursion:
+		// Resetear el arbol de nivel j:
+		int j = 0;
+
+		// Recursion: siguiente arbol:
 		int indice = i + 1;
 		resultado = ejercicio5(arboles, arbol, indice, j, resultado);
 
