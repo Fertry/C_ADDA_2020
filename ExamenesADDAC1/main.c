@@ -1,0 +1,16 @@
+/*
+ *  	Analisis y Diseño de Datos y Algoritmos - 2020
+ *      Author: Alejandro Fernandez Trigo
+ *      Exámenes del 1º cuatrimestre de ADDA
+ */
+
+#include "main.h"
+
+int main() {
+
+	printf("#######################################################################\n");
+	printf("######################### EXÁMENES ADDA C1 ############################\n");
+	printf("#######################################################################\n");
+	printf("\n");
+
+}
