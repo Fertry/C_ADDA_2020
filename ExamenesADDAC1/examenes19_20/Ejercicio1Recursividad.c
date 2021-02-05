@@ -94,3 +94,21 @@ long solucionRecursivaInterna(int n, int k, int e, long resultado) {
 	return resultado;
 
 }
+
+bool secuencia (char * letras) {
+
+	bool resultado = true;
+
+	int i = 0;
+	int j = strlen(letras) - 2;
+
+	while(i <= j && resultado) {
+
+		resultado = letras[i] == letras[i + 1];
+		i += 2;
+
+	}
+
+	return resultado;
+
+}

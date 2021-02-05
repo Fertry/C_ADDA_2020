@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "types/math2.h"
 #include "types/types.h"
 #include "types/list.h"
@@ -21,5 +22,6 @@
 long solucionIterativa(int n, int k);
 long solucionRecursiva(int n, int k);
 long solucionRecursivaInterna(int n, int k, int e, long resultado);
+bool secuencia (char * letras);
 
 #endif /* EXAMENES19_20_EJERCICIOS19_20_H_ */

@@ -5,6 +5,7 @@
  */
 
 #include "main.h"
+#include "examenes19_20/Ejercicios19_20.h"
 
 int main() {
 
@@ -12,5 +13,9 @@ int main() {
 	printf("######################### EXÁMENES ADDA C1 ############################\n");
 	printf("#######################################################################\n");
 	printf("\n");
+
+	char a[20] = "aabbccdf";
+
+	printf("Resultado %d", secuencia(a));
 
 }
