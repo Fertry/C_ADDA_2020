@@ -95,6 +95,14 @@ long solucionRecursivaInterna(int n, int k, int e, long resultado) {
 
 }
 
+/*
+ * Dado una cadena de chars, comprobar si cada caracter aparece 2 veces
+ * consecutivamente. Tener en cuenta que la cadena tiene un nº par de letras.
+ */
+
+/*
+ * Solución iterativa:
+ */
 bool secuencia (char * letras) {
 
 	bool resultado = true;
@@ -102,10 +110,39 @@ bool secuencia (char * letras) {
 	int i = 0;
 	int j = strlen(letras) - 2;
 
+	// Si no hemos llegado al final y es true:
 	while(i <= j && resultado) {
 
+		// Coinciden el elemento en i y en i + 1:
 		resultado = letras[i] == letras[i + 1];
 		i += 2;
+
+	}
+
+	return resultado;
+
+}
+
+/*
+ * Solución recursiva final:
+ */
+bool secuenciaRF1 (char * letras) {
+
+	return secuenciaRF2(letras, 0, strlen(letras) - 2, true);
+
+}
+
+bool secuenciaRF2 (char * letras, int i, int j, bool resultado) {
+
+	// Si no hemos llegado al final y es true:
+	if (i <= j && resultado) {
+
+		bool booleano = letras[i] == letras[i + 1];
+		resultado = secuenciaRF2(letras, i + 2, j, booleano);
+
+	} else {
+
+		return resultado;
 
 	}
 
